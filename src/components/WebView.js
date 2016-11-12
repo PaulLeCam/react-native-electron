@@ -13,6 +13,6 @@ export default class WebView extends Component {
   render () {
     const { source, ...props } = this.props
     const styleProps = StyleSheet.resolve(props)
-    return <webview src={source.uri} {...styleProps} />
+    return <webview src={source.uri} {...props} {...styleProps} />
   }
 }

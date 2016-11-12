@@ -1,0 +1,9 @@
+[ignore]
+.*/node_modules/animated/.*
+.*/node_modules/react-native-web/.*
+
+[include]
+
+[libs]
+
+[options]
