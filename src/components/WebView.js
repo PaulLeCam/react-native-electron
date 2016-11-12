@@ -10,9 +10,19 @@ export default class WebView extends Component {
     }).isRequired,
   };
 
+  bindWebView = (e) => {
+    this.webview = e
+  }
+
   render () {
     const { source, ...props } = this.props
-    const styleProps = StyleSheet.resolve(props)
-    return <webview src={source.uri} {...props} {...styleProps} />
+    return (
+      <webview
+        ref={this.bindWebView}
+        src={source.uri}
+        {...props}
+        {...StyleSheet.resolve(props)}
+      />
+    )
   }
 }
