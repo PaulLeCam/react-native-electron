@@ -7,6 +7,7 @@ import warning from 'warning'
 
 export default class WebView extends Component {
   static propTypes = {
+    injectedJavaScript: PropTypes.string,
     onMessage: PropTypes.func,
     source: PropTypes.oneOfType([
       PropTypes.shape({uri: PropTypes.string.isRequired}),
@@ -17,11 +18,9 @@ export default class WebView extends Component {
   webview: Object
 
   componentDidMount () {
+    this.webview.addEventListener('dom-ready', this.onDomReady)
     if (this.props.onMessage) {
       this.webview.addEventListener('ipc-message', this.onIPCMessage)
-      this.webview.addEventListener('dom-ready', () => {
-        this.webview.openDevTools()
-      })
     }
   }
 
@@ -36,6 +35,7 @@ export default class WebView extends Component {
   }
 
   componentWillUnmount () {
+    this.webview.removeEventListener('dom-ready', this.onDomReady)
     if (this.props.onMessage) {
       this.webview.removeEventListener('ipc-message', this.onIPCMessage)
     }
@@ -43,6 +43,12 @@ export default class WebView extends Component {
 
   bindWebView = (e: Object) => {
     this.webview = e
+  }
+
+  onDomReady = () => {
+    if (this.props.injectedJavaScript) {
+      this.webview.executeJavaScript(this.props.injectedJavaScript)
+    }
   }
 
   onIPCMessage = (e: Object) => {
@@ -63,7 +69,7 @@ export default class WebView extends Component {
   }
 
   render () {
-    const { onMessage, source, ...props } = this.props
+    const { injectedJavaScript: _ijs, onMessage, source, ...props } = this.props
     const extraProps = {}
 
     if (onMessage) {

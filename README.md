@@ -69,14 +69,15 @@ Communication between the WebView and its container is possible by providing an 
 This bridge is implemented using the [`preload` attribute](http://electron.atom.io/docs/api/web-view-tag/#preload) of Electron's WebView. If you override this attribute, make sure to provide a [similar implementation](https://github.com/PaulLeCam/react-native-electron/blob/master/src/components/WebView.preload.js) so the bridge can work.  
 Loading this preload script uses node's `__dirname`, make sure your application injects it as expected, see this [Webpack config for example](https://github.com/PaulLeCam/react-native-electron/blob/master/example/webpack.config.babel.js#L12).
 
-**Props:**
+**Props**
 
-- `onMessage: ?(event: Event) => void`
+- `injectedJavaScript?: string`: JS code executed after the `dom-ready` event is fired.
+- `onMessage?: (event: Event) => void`
 - `source: {uri: string} | {html: string}`
 
 **Methods**
 
-- `postMessage (message: string): void`
+- `postMessage (message: string): void`. This method can only be called if the `onMessage()` prop is provided.
 
 ## License
 
