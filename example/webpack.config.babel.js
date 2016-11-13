@@ -7,6 +7,10 @@ export default {
   entry: {
     app: path.join(__dirname, 'app/renderer.js'),
   },
+  node: {
+    __filename: true,
+    __dirname: true,
+  },
   module: {
     loaders: [
       {
