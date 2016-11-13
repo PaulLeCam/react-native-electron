@@ -74,9 +74,9 @@ export default class WebView extends Component {
       <webview
         ref={this.bindWebView}
         src={source.uri ? source.uri : 'data:text/html,' + source.html}
+        {...extraProps}
         {...props}
         {...StyleSheet.resolve(props)}
-        {...extraProps}
       />
     )
   }

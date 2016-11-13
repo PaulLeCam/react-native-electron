@@ -65,9 +65,18 @@ Alert.alert(
 
 [React Native's WebView](https://facebook.github.io/react-native/docs/webview.html) implementation using [Electron's webview tag](http://electron.atom.io/docs/api/web-view-tag/)
 
+Communication between the WebView and its container is possible by providing an `onMessage()` handler, that will receive events having messages injected in `event.nativeEvent.data`, and calling the `postMessage()` method to send messages to the WebView contents. Messages must be strings.  
+This bridge is implemented using the [`preload` attribute](http://electron.atom.io/docs/api/web-view-tag/#preload) of Electron's WebView. If you override this attribute, make sure to provide a [similar implementation](https://github.com/PaulLeCam/react-native-electron/blob/master/src/components/WebView.preload.js) so the bridge can work.  
+Loading this preload script uses node's `__dirname`, make sure your application injects it as expected, see this [Webpack config for example](https://github.com/PaulLeCam/react-native-electron/blob/master/example/webpack.config.babel.js#L12).
+
 **Props:**
 
-- `source: {uri: string}`
+- `onMessage: ?(event: Event) => void`
+- `source: {uri: string} | {html: string}`
+
+**Methods**
+
+- `postMessage (message: string): void`
 
 ## License
 
