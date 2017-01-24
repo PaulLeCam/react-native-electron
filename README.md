@@ -47,7 +47,7 @@ Alert.alert(
 
 ### Clipboard
 
-[React Native's Clipboard](https://facebook.github.io/react-native/docs/clipboard.html) implementation using [Electron's clipboard](http://electron.atom.io/docs/api/clipboard/)
+[React Native's Clipboard](https://facebook.github.io/react-native/docs/clipboard.html) implementation using [Electron's clipboard](http://electron.atom.io/docs/api/clipboard/).
 
 `Clipboard.getString(type: ?string): Promise<?string>`
 
@@ -55,9 +55,17 @@ Alert.alert(
 
 ### Linking
 
-[React Native's Linking](https://facebook.github.io/react-native/docs/linking.html) implementation using [Electron's shell](http://electron.atom.io/docs/api/shell/)
+[React Native's Linking](https://facebook.github.io/react-native/docs/linking.html) implementation using Electron's [app](http://electron.atom.io/docs/api/app/) and [shell](http://electron.atom.io/docs/api/shell/) APIs.
 
 `Linking.openURL(url: string): Promise<void>`
+
+`Linking.addEventListener(type: string, handler: Function): void`
+
+`Linking.removeEventListener(type: string, handler: Function): void`
+
+`Linking.getInitialURL(): ?string`: returns `process.argv[1]`, expecting the app to be open like `myapp myapp://test`
+
+`Linking.setAsDefaultProtocolClient(protocol: string)`: proxy to [Electron's app.setAsDefaultProtocolClient()](http://electron.atom.io/docs/api/app/#appsetasdefaultprotocolclientprotocol-path-args-macos-windows). This function is not part of React-Native, it is only provided for convenience.
 
 ## Components
 

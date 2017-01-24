@@ -13,7 +13,12 @@ export default class WebView extends Component {
       PropTypes.shape({uri: PropTypes.string.isRequired}),
       PropTypes.shape({html: PropTypes.string.isRequired}),
     ]).isRequired,
-  };
+    style: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.number,
+      PropTypes.object,
+    ]),
+  }
 
   webview: Object
 
@@ -69,7 +74,7 @@ export default class WebView extends Component {
   }
 
   render () {
-    const { injectedJavaScript: _ijs, onMessage, source, ...props } = this.props
+    const { injectedJavaScript: _ijs, onMessage, source, style, ...props } = this.props
     const extraProps = {}
 
     if (onMessage) {
@@ -80,9 +85,9 @@ export default class WebView extends Component {
       <webview
         ref={this.bindWebView}
         src={source.uri ? source.uri : 'data:text/html,' + source.html}
+        style={StyleSheet.flatten(style)}
         {...extraProps}
         {...props}
-        {...StyleSheet.resolve(props)}
       />
     )
   }

@@ -1,14 +1,28 @@
 // @flow
 
-import { shell } from 'electron'
+import { remote, shell } from 'electron'
 import warning from 'warning'
 
-export const addEventListener = () => {
-  warning(false, 'Linking.addEventListener() is not implemented in react-native-electron')
+const eventHandlers = new Map()
+
+export const addEventListener = (type: string, handler: Function) => {
+  if (type === 'url' && typeof handler === 'function') {
+    const wrapHandler = (event: Object, url: string) => {
+      handler({type, url})
+    }
+    eventHandlers.set(handler, wrapHandler)
+    remote.app.on('open-url', wrapHandler)
+  }
 }
 
-export const removeEventListener = () => {
-  warning(false, 'Linking.removeEventListener() is not implemented in react-native-electron')
+export const removeEventListener = (type: string, handler: Function) => {
+  if (type === 'url' && typeof handler === 'function') {
+    const wrapHandler = eventHandlers.get(handler)
+    if (wrapHandler) {
+      remote.app.removeListener('open-url', wrapHandler)
+    }
+    eventHandlers.delete(handler)
+  }
 }
 
 export const openURL = (url: string, options: ?Object): Promise<void> => {
@@ -21,6 +35,9 @@ export const canOpenUrl = () => {
   warning(false, 'Linking.canOpenUrl() is not implemented in react-native-electron')
 }
 
-export const getInitialURL = () => {
-  warning(false, 'Linking.canOpenUrl() is not implemented in react-native-electron')
+export const getInitialURL = (): ?string => remote.process.argv[1] || null
+
+// Non-RN, added for convenience
+export const setAsDefaultProtocolClient = (scheme: string) => {
+  remote.app.setAsDefaultProtocolClient(scheme)
 }
