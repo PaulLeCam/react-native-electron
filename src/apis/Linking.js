@@ -1,7 +1,6 @@
 // @flow
 
 import { remote, shell } from 'electron'
-import warning from 'warning'
 
 const eventHandlers = new Map()
 
@@ -31,9 +30,8 @@ export const openURL = (url: string, options: ?Object): Promise<void> => {
     : Promise.reject(new Error('Could not open URL'))
 }
 
-export const canOpenUrl = () => {
-  warning(false, 'Linking.canOpenUrl() is not implemented in react-native-electron')
-}
+// Apply same behavior as RNW
+export const canOpenURL = (): boolean => true
 
 export const getInitialURL = (): ?string => remote.process.argv[1] || null
 
