@@ -1,8 +1,8 @@
 // @flow
 
 import electron from 'electron'
-import React, { Component, PropTypes } from 'react'
-import { StyleSheet } from 'react-native-web'
+import { Component, PropTypes } from 'react'
+import { createDOMElement } from 'react-native-web'
 import warning from 'warning'
 
 export default class WebView extends Component {
@@ -74,21 +74,18 @@ export default class WebView extends Component {
   }
 
   render () {
-    const { injectedJavaScript: _ijs, onMessage, source, style, ...props } = this.props
+    const { injectedJavaScript: _ijs, onMessage, source, ...props } = this.props
     const extraProps = {}
 
     if (onMessage) {
       extraProps.preload = electron.remote.require('path').resolve(__dirname, 'WebView.preload')
     }
 
-    return (
-      <webview
-        ref={this.bindWebView}
-        src={source.uri ? source.uri : 'data:text/html,' + source.html}
-        style={StyleSheet.flatten(style)}
-        {...extraProps}
-        {...props}
-      />
-    )
+    return createDOMElement('webview', {
+      ref: this.bindWebView,
+      src: source.uri ? source.uri : 'data:text/html,' + source.html,
+      ...extraProps,
+      ...props,
+    })
   }
 }

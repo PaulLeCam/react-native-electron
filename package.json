@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   "peerDependencies": {
     "electron": "~1.4.15",
     "react": "~15.4.2",
-    "react-native-web": "^0.0.72"
+    "react-native-web": "^0.0.75"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
@@ -42,17 +42,17 @@
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "electron": "~1.4.15",
-    "eslint": "^3.14.0",
-    "eslint-config-standard": "^6.2.1",
+    "eslint": "^3.17.0",
+    "eslint-config-standard": "^7.0.0",
     "eslint-config-standard-jsx": "^3.2.0",
     "eslint-config-standard-react": "^4.2.0",
-    "eslint-plugin-promise": "^3.4.2",
+    "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "flow-bin": "^0.39.0",
+    "eslint-plugin-standard": "^2.1.1",
+    "flow-bin": "^0.40.0",
     "react": "~15.4.2",
     "react-dom": "~15.4.2",
-    "react-native-web": "^0.0.72",
+    "react-native-web": "^0.0.75",
     "react-transform-hmr": "^1.0.4",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
