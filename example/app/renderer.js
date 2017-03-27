@@ -12,6 +12,7 @@ import {
   TouchableWithoutFeedback,
   View,
   WebView,
+  // $FlowIgnore: module alias
 } from 'react-native'
 
 type WebSite = 'React Native' | 'React Native for Web' | 'Electron'

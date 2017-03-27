@@ -63,7 +63,7 @@ Alert.alert(
 
 `Linking.removeEventListener(type: string, handler: Function): void`
 
-`Linking.getInitialURL(): ?string`: returns `process.argv[1]`, expecting the app to be open like `myapp myapp://test`
+`Linking.getInitialURL(): ?string`: returns `process.argv[1]`, expecting the app to be opened by a command such as `myapp myapp://test`
 
 `Linking.setAsDefaultProtocolClient(protocol: string)`: proxy to [Electron's app.setAsDefaultProtocolClient()](http://electron.atom.io/docs/api/app/#appsetasdefaultprotocolclientprotocol-path-args-macos-windows). This function is not part of React-Native, it is only provided for convenience.
 
