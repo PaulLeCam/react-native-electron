@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "scripts": {
@@ -28,8 +28,8 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "electron": "^1.4.15",
-    "react": "^15.4.2",
+    "electron": "~1.4.15",
+    "react": "~15.4.2",
     "react-native-web": "^0.0.80"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
-    "electron": "^1.6.2",
+    "electron": "~1.4.15",
     "eslint": "^3.18.0",
     "eslint-config-standard": "^7.1.0",
     "eslint-config-standard-jsx": "^3.2.0",

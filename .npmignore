@@ -1,6 +1,8 @@
 example
+flow-typed
 .babelrc
 .editorconfig
 .eslintrc.json
 .flowconfig
+README.md
 yarn.lock
