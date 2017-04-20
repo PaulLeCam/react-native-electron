@@ -7,7 +7,7 @@ const eventHandlers = new Map()
 export const addEventListener = (type: string, handler: Function) => {
   if (type === 'url' && typeof handler === 'function') {
     const wrapHandler = (event: Object, url: string) => {
-      handler({type, url})
+      handler({ type, url })
     }
     eventHandlers.set(handler, wrapHandler)
     remote.app.on('open-url', wrapHandler)

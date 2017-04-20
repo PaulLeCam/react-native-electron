@@ -13,7 +13,7 @@ export const alert = (
   title: string,
   message: ?string,
   buttons: AlertButton[] = [],
-  type: AlertType = 'none'
+  type: AlertType = 'none',
 ) => {
   remote.dialog.showMessageBox(
     remote.getCurrentWindow(),
@@ -28,6 +28,6 @@ export const alert = (
       if (button && button.onPress) {
         button.onPress()
       }
-    }
+    },
   )
 }

@@ -1,7 +1,8 @@
 // @flow
 
 import electron from 'electron'
-import { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import { Component } from 'react'
 import { createDOMElement } from 'react-native-web'
 import warning from 'warning'
 
@@ -10,8 +11,8 @@ export default class WebView extends Component {
     injectedJavaScript: PropTypes.string,
     onMessage: PropTypes.func,
     source: PropTypes.oneOfType([
-      PropTypes.shape({uri: PropTypes.string.isRequired}),
-      PropTypes.shape({html: PropTypes.string.isRequired}),
+      PropTypes.shape({ uri: PropTypes.string.isRequired }),
+      PropTypes.shape({ html: PropTypes.string.isRequired }),
     ]).isRequired,
     style: PropTypes.oneOfType([
       PropTypes.array,
@@ -22,14 +23,14 @@ export default class WebView extends Component {
 
   webview: Object
 
-  componentDidMount () {
+  componentDidMount() {
     this.webview.addEventListener('dom-ready', this.onDomReady)
     if (this.props.onMessage) {
       this.webview.addEventListener('ipc-message', this.onIPCMessage)
     }
   }
 
-  componentWillReceiveProps (nextProps: Object) {
+  componentWillReceiveProps(nextProps: Object) {
     if (this.props.onMessage) {
       if (!nextProps.onMessage) {
         this.webview.removeEventListener('ipc-message', this.onIPCMessage)
@@ -39,7 +40,7 @@ export default class WebView extends Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.webview.removeEventListener('dom-ready', this.onDomReady)
     if (this.props.onMessage) {
       this.webview.removeEventListener('ipc-message', this.onIPCMessage)
@@ -69,16 +70,21 @@ export default class WebView extends Component {
     if (this.props.onMessage) {
       this.webview.send('postMessage', message)
     } else {
-      warning(false, 'Cannot use postMessage() without setting the onMessage() handler')
+      warning(
+        false,
+        'Cannot use postMessage() without setting the onMessage() handler',
+      )
     }
   }
 
-  render () {
+  render() {
     const { injectedJavaScript: _ijs, onMessage, source, ...props } = this.props
     const extraProps = {}
 
     if (onMessage) {
-      extraProps.preload = electron.remote.require('path').resolve(__dirname, 'WebView.preload')
+      extraProps.preload = electron.remote
+        .require('path')
+        .resolve(__dirname, 'WebView.preload')
     }
 
     return createDOMElement('webview', {
