@@ -80,6 +80,10 @@ Loading this preload script uses node's `__dirname`, make sure your application 
 **Props**
 
 - `injectedJavaScript?: string`: JS code executed after the `dom-ready` event is fired.
+- `onError?: (event: Event) => void`
+- `onLoad?: (event: Event) => void`
+- `onLoadEnd?: (event: Event) => void`
+- `onLoadStart?: (event: Event) => void`
 - `onMessage?: (event: Event) => void`
 - `source: {uri: string} | {html: string}`
 

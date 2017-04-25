@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import {
   render,
+  ActivityIndicator,
   Alert,
   Clipboard,
   Linking,
@@ -15,14 +16,15 @@ import {
   // $FlowIgnore: module alias
 } from 'react-native'
 
-type WebSite = 'React Native' | 'React Native for Web' | 'Electron'
-
 const WEBSITES = {
   'React Native': 'https://facebook.github.io/react-native/docs/getting-started.html',
   'React Native for Web': 'https://github.com/necolas/react-native-web/blob/master/README.md',
-  'Electron': 'http://electron.atom.io/docs/',
+  Electron: 'http://electron.atom.io/docs/',
 }
 
+type WebSite = $Keys<typeof WEBSITES>
+
+const WHITE = '#FFFFFF'
 const GREY_LIGHT = '#EEEEEE'
 const GREY_DARK = '#333333'
 
@@ -90,60 +92,106 @@ const openURI = (uri: string) => {
   Linking.openURL(uri)
 }
 
-const NavBar = ({ active, onSelect }: {
-  active: WebSite,
+const NavBar = ({
+  active,
+  onSelect,
+}: {
+  active: ?WebSite,
   onSelect: (website: WebSite) => void,
 }) => {
   const tabs = Object.keys(WEBSITES).map((website: WebSite) => (
     <TouchableWithoutFeedback
       key={website}
-      onPress={function () { onSelect(website) }}>
-      <View style={[
-        styles.navBarTab,
-        active === website && styles.navBarTabActive,
-      ]}>
+      onPress={function() {
+        onSelect(website)
+      }}>
+      <View
+        style={[
+          styles.navBarTab,
+          active === website && styles.navBarTabActive,
+        ]}>
         <Text>{website}</Text>
       </View>
     </TouchableWithoutFeedback>
   ))
 
-  return (
-    <View style={styles.navBar}>{tabs}</View>
-  )
+  return <View style={styles.navBar}>{tabs}</View>
 }
 
-const UriBar = ({ uri }: {uri: string}) => (
+const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) => (
   <View style={styles.uriBar}>
     <View style={styles.uriValueView}>
       <Text numberOfLines={1} style={styles.uriText}>{uri}</Text>
     </View>
+    <ActivityIndicator animating={loading} color={WHITE} />
     <TouchableOpacity
-      onPress={function () { copyURI(uri) }}
+      onPress={function() {
+        copyURI(uri)
+      }}
       style={styles.uriTouchable}>
       <Text style={styles.uriText}>Copy to clipboard</Text>
     </TouchableOpacity>
     <TouchableOpacity
-      onPress={function () { openURI(uri) }}
+      onPress={function() {
+        openURI(uri)
+      }}
       style={styles.uriTouchable}>
       <Text style={styles.uriText}>Open in browser</Text>
     </TouchableOpacity>
   </View>
 )
 
+const SelectUriBar = () => (
+  <View style={styles.uriBar}>
+    <View style={styles.uriValueView}>
+      <Text numberOfLines={1} style={styles.uriText}>
+        Select one of the projects above to load its documentation
+      </Text>
+    </View>
+  </View>
+)
+
 class App extends Component {
   state: {
-    website: WebSite,
+    loading: boolean,
+    website: ?WebSite,
   } = {
-    website: 'React Native',
+    loading: false,
+    website: null,
+  }
+
+  onLoadStart = () => {
+    this.setState({ loading: true })
+  }
+
+  onLoadEnd = () => {
+    this.setState({ loading: false })
   }
 
   onSelect = (website: WebSite) => {
-    this.setState({website})
+    this.setState({ website })
   }
 
-  render () {
-    const { website } = this.state
-    const uri = WEBSITES[website]
+  render() {
+    const { loading, website } = this.state
+
+    let uri
+    let uriBar
+    let webView = null
+    if (website) {
+      uri = WEBSITES[website]
+      uriBar = <UriBar loading={loading} uri={uri} />
+      webView = (
+        <WebView
+          onLoadStart={this.onLoadStart}
+          onLoadEnd={this.onLoadEnd}
+          source={{ uri }}
+          style={styles.webView}
+        />
+      )
+    } else {
+      uriBar = <SelectUriBar />
+    }
 
     return (
       <View style={styles.layout}>
@@ -156,11 +204,8 @@ class App extends Component {
           </Text>
         </View>
         <NavBar active={website} onSelect={this.onSelect} />
-        <UriBar uri={uri} />
-        <WebView
-          source={{uri}}
-          style={styles.webView}
-        />
+        {uriBar}
+        {webView}
       </View>
     )
   }
