@@ -1,12 +1,14 @@
 // Export the full public API of react-native-web
+
 export {
   // top-level API
   findNodeHandle,
   render,
   unmountComponentAtNode,
-  // web-only
-  renderToStaticMarkup,
-  renderToString,
+  // modules
+  createDOMElement,
+  NativeModules,
+  processColor,
   // APIs
   Animated,
   AppRegistry,
@@ -25,6 +27,7 @@ export {
   Vibration,
   // components
   ActivityIndicator,
+  Button,
   Image,
   ListView,
   ProgressBar,
@@ -38,8 +41,11 @@ export {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
-  // modules
-  NativeModules,
+  // propTypes
+  ColorPropType,
+  EdgeInsetsPropType,
+  PointPropType,
+  ViewPropTypes,
 } from 'react-native-web'
 
 // APIs
