@@ -16,6 +16,7 @@ export default class WebView extends Component {
     onLoadEnd: PropTypes.func,
     onLoadStart: PropTypes.func,
     onMessage: PropTypes.func,
+    onNavigationStateChange: PropTypes.func,
     source: PropTypes.oneOfType([
       PropTypes.shape({ uri: PropTypes.string.isRequired }),
       PropTypes.shape({ html: PropTypes.string.isRequired }),
@@ -45,6 +46,10 @@ export default class WebView extends Component {
     if (this.props.onMessage) {
       this.webview.addEventListener('ipc-message', this.onIPCMessage)
     }
+    if (this.props.onNavigationStateChange) {
+      this.webview.addEventListener('will-navigate', this.onWillNavigate)
+      this.webview.addEventListener('did-navigate', this.onDidNavigate)
+    }
   }
 
   componentWillReceiveProps(nextProps: Object) {
@@ -54,6 +59,16 @@ export default class WebView extends Component {
       }
     } else if (nextProps.onMessage) {
       this.webview.addEventListener('ipc-message', this.onIPCMessage)
+    }
+
+    if (this.props.onNavigationStateChange) {
+      if (!nextProps.onNavigationStateChange) {
+        this.webview.removeEventListener('will-navigate', this.onWillNavigate)
+        this.webview.removeEventListener('did-navigate', this.onDidNavigate)
+      }
+    } else if (nextProps.onNavigationStateChange) {
+      this.webview.addEventListener('will-navigate', this.onWillNavigate)
+      this.webview.addEventListener('did-navigate', this.onDidNavigate)
     }
   }
 
@@ -67,6 +82,10 @@ export default class WebView extends Component {
     )
     if (this.props.onMessage) {
       this.webview.removeEventListener('ipc-message', this.onIPCMessage)
+    }
+    if (this.props.onNavigationStateChange) {
+      this.webview.removeEventListener('will-navigate', this.onWillNavigate)
+      this.webview.removeEventListener('did-navigate', this.onDidNavigate)
     }
   }
 
@@ -114,6 +133,20 @@ export default class WebView extends Component {
     })
   }
 
+  onWillNavigate = (e: Object) => {
+    this.props.onNavigationStateChange({
+      loading: true,
+      url: e.url,
+    })
+  }
+
+  onDidNavigate = (e: Object) => {
+    this.props.onNavigationStateChange({
+      loading: false,
+      url: e.url,
+    })
+  }
+
   onIPCMessage = (e: Object) => {
     if (e.channel === 'postMessage') {
       const msg: Object = new Event('message')
@@ -142,6 +175,7 @@ export default class WebView extends Component {
       onLoadStart: _ols,
       onLoadEnd: _ole,
       onMessage,
+      onNavigationStateChange: _onsc,
       source,
       ...props
     } = this.props

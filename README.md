@@ -85,6 +85,7 @@ Loading this preload script uses node's `__dirname`, make sure your application 
 - `onLoadEnd?: (event: Event) => void`
 - `onLoadStart?: (event: Event) => void`
 - `onMessage?: (event: Event) => void`
+- `onNavigationStateChange?: (state: {loading: boolean, url: string}) => void`
 - `source: {uri: string} | {html: string}`
 
 **Methods**
