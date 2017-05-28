@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/node@^7.0.18":
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.22.tgz#4593f4d828bdd612929478ea40c67b4f403ca255"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -1503,10 +1507,11 @@ electron-download@^3.0.1:
     semver "^5.3.0"
     sumchecker "^1.2.0"
 
-electron@~1.6.6:
-  version "1.6.8"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-1.6.8.tgz#41cbbe7272ccd93339c040f856c0d6372a4ddb07"
+electron@~1.6.10:
+  version "1.6.11"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-1.6.11.tgz#be79c0ebdcefedb5bf28117409800fa53baceffa"
   dependencies:
+    "@types/node" "^7.0.18"
     electron-download "^3.0.1"
     extract-zip "^1.0.3"
 
@@ -1856,7 +1861,7 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.8, fbjs@^0.8.9:
+fbjs@^0.8.12, fbjs@^0.8.9:
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
@@ -1938,9 +1943,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flow-bin@^0.46.0:
-  version "0.46.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.46.0.tgz#06ad7fe19dddb1042264438064a2a32fee12b872"
+flow-bin@^0.47.0:
+  version "0.47.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.47.0.tgz#a2a08ab3e0d1f1cb57d17e27b30b118b62fda367"
 
 flow-parser@0.45.0:
   version "0.45.0"
@@ -2305,9 +2310,9 @@ ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
-inline-style-prefixer@^3.0.2:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-3.0.3.tgz#eca9767080b29a8afcf13299fe6358e1f320bbeb"
+inline-style-prefixer@^3.0.3:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-3.0.5.tgz#0092881b3a2eadf1bd619dc43726557316f76042"
   dependencies:
     bowser "^1.6.0"
     css-in-js-utils "^1.0.3"
@@ -3314,9 +3319,9 @@ react-dom@^15.5.0:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react-native-web@^0.0.94:
-  version "0.0.94"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.0.94.tgz#f00d71775c91fdb5b1b045d5590512cb2f98d453"
+react-native-web@^0.0.95:
+  version "0.0.95"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.0.95.tgz#6faebf7e377adec8a8e9ffe724f061d1e1c8db01"
   dependencies:
     animated "^0.2.0"
     array-find-index "^1.0.2"
@@ -3324,9 +3329,9 @@ react-native-web@^0.0.94:
     create-react-class "^15.5.2"
     debounce "1.0.2"
     deep-assign "^2.0.0"
-    fbjs "^0.8.8"
+    fbjs "^0.8.12"
     hyphenate-style-name "^1.0.2"
-    inline-style-prefixer "^3.0.2"
+    inline-style-prefixer "^3.0.3"
     normalize-css-color "^1.0.2"
     prop-types "^15.5.8"
     react-timer-mixin "^0.13.3"
