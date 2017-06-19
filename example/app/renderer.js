@@ -17,8 +17,10 @@ import {
 } from 'react-native'
 
 const WEBSITES = {
-  'React Native': 'https://facebook.github.io/react-native/docs/getting-started.html',
-  'React Native for Web': 'https://github.com/necolas/react-native-web/blob/master/README.md',
+  'React Native':
+    'https://facebook.github.io/react-native/docs/getting-started.html',
+  'React Native for Web':
+    'https://github.com/necolas/react-native-web/blob/master/README.md',
   Electron: 'http://electron.atom.io/docs/',
 }
 
@@ -99,7 +101,7 @@ const NavBar = ({
   active: ?WebSite,
   onSelect: (website: WebSite) => void,
 }) => {
-  const tabs = Object.keys(WEBSITES).map((website: WebSite) => (
+  const tabs = Object.keys(WEBSITES).map((website: WebSite) =>
     <TouchableWithoutFeedback
       key={website}
       onPress={function() {
@@ -112,13 +114,13 @@ const NavBar = ({
         ]}>
         <Text>{website}</Text>
       </View>
-    </TouchableWithoutFeedback>
-  ))
+    </TouchableWithoutFeedback>,
+  )
 
   return <View style={styles.navBar}>{tabs}</View>
 }
 
-const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) => (
+const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) =>
   <View style={styles.uriBar}>
     <View style={styles.uriValueView}>
       <Text numberOfLines={1} style={styles.uriText}>{uri}</Text>
@@ -139,9 +141,8 @@ const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) => (
       <Text style={styles.uriText}>Open in browser</Text>
     </TouchableOpacity>
   </View>
-)
 
-const SelectUriBar = () => (
+const SelectUriBar = () =>
   <View style={styles.uriBar}>
     <View style={styles.uriValueView}>
       <Text numberOfLines={1} style={styles.uriText}>
@@ -149,7 +150,6 @@ const SelectUriBar = () => (
       </Text>
     </View>
   </View>
-)
 
 class App extends Component {
   state: {

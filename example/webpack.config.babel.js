@@ -18,13 +18,18 @@ export default {
         loader: 'babel-loader',
         options: {
           plugins: [
-            ['react-transform', {
-              transforms: [{
-                transform: 'react-transform-hmr',
-                imports: ['react'],
-                locals: ['module'],
-              }],
-            }],
+            [
+              'react-transform',
+              {
+                transforms: [
+                  {
+                    transform: 'react-transform-hmr',
+                    imports: ['react'],
+                    locals: ['module'],
+                  },
+                ],
+              },
+            ],
           ],
         },
       },
@@ -40,14 +45,14 @@ export default {
     filename: '[name].js',
     publicPath: 'http://localhost:7000/build',
   },
-  target: 'electron',
+  target: 'electron-renderer',
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: true,
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
+        NODE_ENV: JSON.stringify('development'),
       },
     }),
     new webpack.NoEmitOnErrorsPlugin(),
