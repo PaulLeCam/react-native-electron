@@ -34,8 +34,3 @@ export const openURL = (url: string, options: ?Object): Promise<void> => {
 export const canOpenURL = (): boolean => true
 
 export const getInitialURL = (): ?string => remote.process.argv[1] || null
-
-// Non-RN, added for convenience
-export const setAsDefaultProtocolClient = (scheme: string) => {
-  remote.app.setAsDefaultProtocolClient(scheme)
-}
