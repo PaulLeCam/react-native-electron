@@ -3,8 +3,12 @@
 .*/node_modules/react-native-web/.*
 
 [include]
+./node_modules/react
 
-[libs]
+[lints]
+all=warn
 
 [options]
+esproposal.export_star_as=enable
+include_warnings=true
 suppress_comment=\\(.\\|\n\\)*\\$FlowIgnore

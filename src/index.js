@@ -1,3 +1,4 @@
+// @flow
 // Export the full public API of react-native-web
 
 export {
@@ -65,4 +66,4 @@ export * as Clipboard from './apis/Clipboard'
 export * as Linking from './apis/Linking'
 
 // components
-export WebView from './components/WebView'
+export { default as WebView } from './components/WebView'

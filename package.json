@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "flow": "flow check",
     "prepublishOnly": "npm start",
     "start": "npm run test && npm run build:lib",
-    "test": "eslint ./src && flow"
+    "test": "eslint ./src && flow check"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "electron": "~1.6.6",
     "prop-types": "^15.5.0",
     "react": "15.4.x || 15.5.x || 15.6.x",
-    "react-native-web": "^0.0.113"
+    "react-native-web": "^0.0.119"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -42,20 +42,20 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "electron": "~1.6.10",
-    "eslint": "^4.3.0",
+    "electron": "~1.6.12",
+    "eslint": "^4.4.1",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-prettier": "^2.1.2",
-    "eslint-plugin-react": "^7.1.0",
-    "flow-bin": "^0.51.0",
+    "eslint-plugin-react": "^7.2.0",
+    "flow-bin": "^0.52.0",
     "prettier": "^1.5.3",
     "prop-types": "^15.5.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-native-web": "^0.0.113",
+    "react-native-web": "^0.0.119",
     "react-transform-hmr": "^1.0.4",
-    "webpack": "^3.4.0",
-    "webpack-dev-server": "^2.6.1"
+    "webpack": "^3.5.3",
+    "webpack-dev-server": "^2.7.1"
   }
 }

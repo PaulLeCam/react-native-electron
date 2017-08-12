@@ -30,6 +30,8 @@ To run the demo app, fork this repository and run:
 - `npm run example:server`
 - In another terminal instance, `npm run example:electron`
 
+For a more advanced example, see the [GH Viewer client](https://github.com/gh-viewer/client) using this library among others of the React ecosystem.
+
 ## APIs
 
 ### Alert

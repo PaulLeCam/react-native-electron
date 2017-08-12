@@ -4,5 +4,6 @@ flow-typed
 .editorconfig
 .eslintrc.json
 .flowconfig
+.travis.yml
 README.md
 yarn.lock
