@@ -1,5 +1,6 @@
 example
 flow-typed
+src
 .babelrc
 .editorconfig
 .eslintrc.json

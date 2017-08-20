@@ -1,3 +1,52 @@
 {
-  "presets": ["es2015", "react", "stage-0"]
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            },
+            "modules": "commonjs",
+            "loose": true
+          }
+        ],
+        "react",
+        "stage-0"
+      ]
+    },
+    "cjs": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "electron": "1.6"
+            },
+            "modules": "commonjs",
+            "loose": true
+          }
+        ],
+        "react",
+        "stage-0"
+      ]
+    },
+    "esm": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "electron": "1.6"
+            },
+            "modules": false,
+            "loose": true
+          }
+        ],
+        "react",
+        "stage-0"
+      ]
+    }
+  }
 }
