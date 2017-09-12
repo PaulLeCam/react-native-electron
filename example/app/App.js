@@ -100,7 +100,7 @@ const NavBar = ({
   active: ?WebSite,
   onSelect: (website: WebSite) => void,
 }) => {
-  const tabs = Object.keys(WEBSITES).map((website: WebSite) =>
+  const tabs = Object.keys(WEBSITES).map((website: WebSite) => (
     <TouchableWithoutFeedback
       key={website}
       onPress={function() {
@@ -111,21 +111,15 @@ const NavBar = ({
           styles.navBarTab,
           active === website && styles.navBarTabActive,
         ]}>
-        <Text>
-          {website}
-        </Text>
+        <Text>{website}</Text>
       </View>
-    </TouchableWithoutFeedback>,
-  )
+    </TouchableWithoutFeedback>
+  ))
 
-  return (
-    <View style={styles.navBar}>
-      {tabs}
-    </View>
-  )
+  return <View style={styles.navBar}>{tabs}</View>
 }
 
-const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) =>
+const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) => (
   <View style={styles.uriBar}>
     <View style={styles.uriValueView}>
       <Text numberOfLines={1} style={styles.uriText}>
@@ -148,8 +142,9 @@ const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) =>
       <Text style={styles.uriText}>Open in browser</Text>
     </TouchableOpacity>
   </View>
+)
 
-const SelectUriBar = () =>
+const SelectUriBar = () => (
   <View style={styles.uriBar}>
     <View style={styles.uriValueView}>
       <Text numberOfLines={1} style={styles.uriText}>
@@ -157,6 +152,7 @@ const SelectUriBar = () =>
       </Text>
     </View>
   </View>
+)
 
 type State = {
   loading: boolean,

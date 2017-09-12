@@ -3,7 +3,7 @@
 import electron from 'electron'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
-import { createDOMElement } from 'react-native-web'
+import { createElement } from 'react-native-web'
 import warning from 'warning'
 
 type ViewState = 'IDLE' | 'LOADING' | 'ERROR'
@@ -236,7 +236,7 @@ export default class WebView extends Component<Props, State> {
       src = `data:text/html,${source.html}`
     }
 
-    return createDOMElement('webview', {
+    return createElement('webview', {
       ref: this.bindWebView,
       src,
       ...extraProps,

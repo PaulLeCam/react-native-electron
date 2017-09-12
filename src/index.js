@@ -7,7 +7,7 @@ export {
   render,
   unmountComponentAtNode,
   // modules
-  createDOMElement,
+  createElement,
   NativeModules,
   processColor,
   // APIs
@@ -21,6 +21,7 @@ export {
   Easing,
   I18nManager,
   InteractionManager,
+  Keyboard,
   NetInfo,
   PanResponder,
   PixelRatio,
@@ -33,6 +34,7 @@ export {
   Button,
   FlatList,
   Image,
+  KeyboardAvoidingView,
   ListView,
   Modal,
   Picker,
