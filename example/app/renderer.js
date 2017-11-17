@@ -7,7 +7,7 @@ const root = document.getElementById('app')
 
 const renderApp = () => {
   const App = require('./App').default
-  render(<App />, root)
+  if (root) render(<App />, root)
 }
 
 renderApp()

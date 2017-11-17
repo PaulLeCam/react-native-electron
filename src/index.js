@@ -2,8 +2,9 @@
 // Export the full public API of react-native-web
 
 export {
-  // top-level API
+  // react-dom
   findNodeHandle,
+  hydrate,
   render,
   unmountComponentAtNode,
   // modules
@@ -15,7 +16,6 @@ export {
   AppRegistry,
   AppState,
   AsyncStorage,
-  BackAndroid,
   BackHandler,
   Dimensions,
   Easing,
