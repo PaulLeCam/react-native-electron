@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -10,8 +10,7 @@
     "compile:lib": "BABEL_ENV=cjs babel src --out-dir lib",
     "compile:es": "BABEL_ENV=esm babel src --out-dir es",
     "build": "npm run clean && npm run compile:lib && npm run compile:es",
-    "example:server":
-      "webpack-dev-server --config ./example/webpack.config.babel.js --progress",
+    "example:server": "webpack-dev-server --config ./example/webpack.config.babel.js --progress",
     "example:electron": "electron ./example/app/main.js",
     "flow": "flow check",
     "prepublishOnly": "npm run build",
