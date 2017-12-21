@@ -1,13 +1,11 @@
 [ignore]
-.*/node_modules/animated/.*
-.*/node_modules/react-native-web/.*
 
 [include]
 
 [lints]
 all=warn
+unclear-type=off
 
 [options]
-esproposal.export_star_as=enable
 include_warnings=true
-suppress_comment=\\(.\\|\n\\)*\\$FlowIgnore
+esproposal.export_star_as=enable

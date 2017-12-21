@@ -12,7 +12,7 @@ import {
   TouchableWithoutFeedback,
   View,
   WebView,
-  // $FlowIgnore: module alias
+  // $FlowFixMe
 } from 'react-native'
 
 const WEBSITES = {
@@ -159,8 +159,8 @@ type State = {
   website: ?WebSite,
 }
 
-export default class App extends Component<any, State> {
-  state: State = {
+export default class App extends Component<{}, State> {
+  state = {
     loading: false,
     website: null,
   }
