@@ -1,3 +1,7 @@
+## v0.3.0 (2017-01-09)
+
+Updated dependency to React Native for Web v0.3.
+
 ## v0.2.0 (2017-12-21)
 
 Updated dependency to React Native for Web v0.2.
