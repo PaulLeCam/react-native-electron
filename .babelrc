@@ -22,7 +22,7 @@
           "env",
           {
             "targets": {
-              "electron": "1.6"
+              "electron": "1.8"
             },
             "modules": "commonjs",
             "loose": true
@@ -38,7 +38,7 @@
           "env",
           {
             "targets": {
-              "electron": "1.6"
+              "electron": "1.8"
             },
             "modules": false,
             "loose": true
