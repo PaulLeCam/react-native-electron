@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -10,7 +10,8 @@
     "compile:lib": "BABEL_ENV=cjs babel src --out-dir lib",
     "compile:es": "BABEL_ENV=esm babel src --out-dir es",
     "build": "npm run clean && npm run compile:lib && npm run compile:es",
-    "example:server": "webpack-dev-server --config ./example/webpack.config.babel.js --progress",
+    "example:server":
+      "webpack-dev-server --config ./example/webpack.config.babel.js --progress",
     "example:electron": "electron ./example/app/main.js",
     "flow": "flow check",
     "prepublishOnly": "npm run build",
@@ -46,9 +47,9 @@
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.3",
     "electron": "~1.8.2",
-    "eslint": "^4.18.0",
+    "eslint": "^4.18.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.45.0",
+    "eslint-plugin-flowtype": "^2.46.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.66.0",
@@ -57,7 +58,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-native-web": "^0.5.0",
+    "react-native-web": "^0.5.1",
     "rimraf": "^2.6.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"

@@ -1,3 +1,7 @@
+## v0.4.1 (2018-02-22)
+
+Fixed `canOpenURL()` and `getInitialURL()` returning promises in Linking module.
+
 ## v0.4.0 (2018-02-20)
 
 * Updated Electron dependency to v1.8.

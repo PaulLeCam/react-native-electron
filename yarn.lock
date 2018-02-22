@@ -2032,9 +2032,9 @@ eslint-config-prettier@^2.9.0:
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-plugin-flowtype@^2.45.0:
-  version "2.45.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.45.0.tgz#20d8b15d1e1e71ea4e9498e8be3fc62c0752fcbf"
+eslint-plugin-flowtype@^2.46.0:
+  version "2.46.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.46.0.tgz#832e2f6cc75ea33a25b801b6b87f0342f372b362"
   dependencies:
     lodash "^4.15.0"
 
@@ -2107,9 +2107,9 @@ eslint@^4.0.0:
     table "^4.0.1"
     text-table "~0.2.0"
 
-eslint@^4.18.0:
-  version "4.18.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.18.0.tgz#ebd0ba795af6dc59aa5cee17938160af5950e051"
+eslint@^4.18.1:
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.18.1.tgz#b9138440cb1e98b2f44a0d578c6ecf8eae6150b0"
   dependencies:
     ajv "^5.3.0"
     babel-code-frame "^6.22.0"
@@ -4298,9 +4298,9 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-native-web@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.5.0.tgz#3877effee8d04eae5c5834c9fcfba29c99825596"
+react-native-web@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.5.1.tgz#6a35eeded29fef8c8c467e416a33666c6bee6160"
   dependencies:
     array-find-index "^1.0.2"
     create-react-class "^15.6.2"

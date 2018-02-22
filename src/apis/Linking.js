@@ -31,6 +31,7 @@ export const openURL = (url: string, options: ?Object): Promise<void> => {
 }
 
 // Apply same behavior as RNW
-export const canOpenURL = (): boolean => true
+export const canOpenURL = (): Promise<boolean> => Promise.resolve(true)
 
-export const getInitialURL = (): ?string => remote.process.argv[1] || null
+export const getInitialURL = (): Promise<?string> =>
+  Promise.resolve(remote.process.argv[1] || null)
