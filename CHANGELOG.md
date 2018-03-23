@@ -1,3 +1,8 @@
+## v0.4.2 (2018-03-23)
+
+* Updated Electron dependency to v1.8.4 to include the [webview vulnerability fix](https://electronjs.org/blog/webview-fix).
+* Updated example to webpack 4 and webpack-serve.
+
 ## v0.4.1 (2018-02-22)
 
 Fixed `canOpenURL()` and `getInitialURL()` returning promises in Linking module.
