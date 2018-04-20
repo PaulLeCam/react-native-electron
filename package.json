@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "module": "es/index.js",

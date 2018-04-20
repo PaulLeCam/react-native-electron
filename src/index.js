@@ -4,7 +4,6 @@
 export {
   // react-dom
   findNodeHandle,
-  hydrate,
   render,
   unmountComponentAtNode,
   // modules
@@ -47,11 +46,11 @@ export {
   ScrollView,
   SectionList,
   Slider,
+  StatusBar,
   Switch,
   Text,
   TextInput,
   Touchable,
-  TouchableBounce,
   TouchableHighlight,
   TouchableNativeFeedback,
   TouchableOpacity,

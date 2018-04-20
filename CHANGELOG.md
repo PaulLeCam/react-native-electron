@@ -1,3 +1,7 @@
+## v0.5.1 (2018-04-20)
+
+Fixed missing export of `StatusBar` component.
+
 ## v0.5.0 (2018-04-20)
 
 Updated React Native for Web dependency to v0.6.
