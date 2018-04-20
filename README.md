@@ -20,6 +20,8 @@ npm install react-native-electron
 npm install electron react react-native-web
 ```
 
+`react-art` is also needed if you use `ART`.
+
 ## Example
 
 See the `example` directory for the source code and Webpack config.

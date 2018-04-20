@@ -1,3 +1,7 @@
+## v0.5.0 (2018-04-20)
+
+Updated React Native for Web dependency to v0.6.
+
 ## v0.4.2 (2018-03-23)
 
 * Updated Electron dependency to v1.8.4 to include the [webview vulnerability fix](https://electronjs.org/blog/webview-fix).

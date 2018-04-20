@@ -9,3 +9,4 @@ unclear-type=off
 [options]
 include_warnings=true
 esproposal.export_star_as=enable
+module.name_mapper='^react-native$' -> '<PROJECT_ROOT>/src'

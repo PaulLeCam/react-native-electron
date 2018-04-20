@@ -12,7 +12,6 @@ import {
   TouchableWithoutFeedback,
   View,
   WebView,
-  // $FlowFixMe
 } from 'react-native'
 
 const WEBSITES = {
