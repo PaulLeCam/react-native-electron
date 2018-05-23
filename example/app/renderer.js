@@ -12,6 +12,7 @@ const renderApp = () => {
 
 renderApp()
 
+// $FlowFixMe: missing module.hot definition
 if (module && module.hot != null && typeof module.hot.accept === 'function') {
   module.hot.accept(['./App'], () =>
     setImmediate(() => {

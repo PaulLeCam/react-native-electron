@@ -1,8 +1,7 @@
 // @flow
 
 import electron from 'electron'
-import PropTypes from 'prop-types'
-import { Component } from 'react'
+import { Component, createRef, type ElementRef } from 'react'
 import { createElement } from 'react-native-web'
 import warning from 'warning'
 
@@ -31,109 +30,77 @@ type State = {
 }
 
 export default class WebView extends Component<Props, State> {
-  static propTypes = {
-    injectedJavaScript: PropTypes.string,
-    onError: PropTypes.func,
-    onLoad: PropTypes.func,
-    onLoadEnd: PropTypes.func,
-    onLoadStart: PropTypes.func,
-    onMessage: PropTypes.func,
-    onNavigationStateChange: PropTypes.func,
-    source: PropTypes.oneOfType([
-      PropTypes.shape({ uri: PropTypes.string.isRequired }),
-      PropTypes.shape({ html: PropTypes.string.isRequired }),
-    ]).isRequired,
-    style: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.number,
-      PropTypes.object,
-    ]),
-  }
-
   state: State = {
     viewState: 'IDLE',
     lastErrorEvent: null,
   }
 
-  webview: ?Object
+  // flowlint-next-line deprecated-type:off
+  webviewRef: ElementRef<*> = createRef()
 
   componentDidMount() {
-    this.webview && this.webview.addEventListener('dom-ready', this.onDomReady)
-    this.webview &&
-      this.webview.addEventListener('did-fail-load', this.onDidFailLoad)
-    this.webview &&
-      this.webview.addEventListener('did-finish-load', this.onDidFinishLoad)
-    this.webview &&
-      this.webview.addEventListener('did-start-loading', this.onDidStartLoading)
-    if (this.props.onMessage) {
-      this.webview &&
-        this.webview.addEventListener('ipc-message', this.onIPCMessage)
-    }
-    if (this.props.onNavigationStateChange) {
-      this.webview &&
-        this.webview.addEventListener('will-navigate', this.onWillNavigate)
-      this.webview &&
-        this.webview.addEventListener('did-navigate', this.onDidNavigate)
+    const webview = this.webviewRef.current
+    if (webview != null) {
+      webview.addEventListener('dom-ready', this.onDomReady)
+      webview.addEventListener('did-fail-load', this.onDidFailLoad)
+      webview.addEventListener('did-finish-load', this.onDidFinishLoad)
+      webview.addEventListener('did-start-loading', this.onDidStartLoading)
+      if (this.props.onMessage) {
+        webview.addEventListener('ipc-message', this.onIPCMessage)
+      }
+      if (this.props.onNavigationStateChange) {
+        webview.addEventListener('will-navigate', this.onWillNavigate)
+        webview.addEventListener('did-navigate', this.onDidNavigate)
+      }
     }
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    if (this.props.onMessage) {
-      if (!nextProps.onMessage) {
-        this.webview &&
-          this.webview.removeEventListener('ipc-message', this.onIPCMessage)
+  componentDidUpdate(prevProps: Props) {
+    const webview = this.webviewRef.current
+    if (webview != null) {
+      if (prevProps.onMessage) {
+        if (!this.props.onMessage) {
+          webview.removeEventListener('ipc-message', this.onIPCMessage)
+        }
+      } else if (this.props.onMessage) {
+        webview.addEventListener('ipc-message', this.onIPCMessage)
       }
-    } else if (nextProps.onMessage) {
-      this.webview &&
-        this.webview.addEventListener('ipc-message', this.onIPCMessage)
-    }
 
-    if (this.props.onNavigationStateChange) {
-      if (!nextProps.onNavigationStateChange) {
-        this.webview &&
-          this.webview.removeEventListener('will-navigate', this.onWillNavigate)
-        this.webview &&
-          this.webview.removeEventListener('did-navigate', this.onDidNavigate)
+      if (prevProps.onNavigationStateChange) {
+        if (!this.props.onNavigationStateChange) {
+          webview.removeEventListener('will-navigate', this.onWillNavigate)
+          webview.removeEventListener('did-navigate', this.onDidNavigate)
+        }
+      } else if (this.props.onNavigationStateChange) {
+        webview.addEventListener('will-navigate', this.onWillNavigate)
+        webview.addEventListener('did-navigate', this.onDidNavigate)
       }
-    } else if (nextProps.onNavigationStateChange) {
-      this.webview &&
-        this.webview.addEventListener('will-navigate', this.onWillNavigate)
-      this.webview &&
-        this.webview.addEventListener('did-navigate', this.onDidNavigate)
     }
   }
 
   componentWillUnmount() {
-    this.webview &&
-      this.webview.removeEventListener('dom-ready', this.onDomReady)
-    this.webview &&
-      this.webview.removeEventListener('did-fail-load', this.onDidFailLoad)
-    this.webview &&
-      this.webview.removeEventListener('did-finish-load', this.onDidFinishLoad)
-    this.webview &&
-      this.webview.removeEventListener(
-        'did-start-loading',
-        this.onDidStartLoading,
-      )
-    if (this.props.onMessage) {
-      this.webview &&
-        this.webview.removeEventListener('ipc-message', this.onIPCMessage)
+    const webview = this.webviewRef.current
+    if (webview != null) {
+      webview.removeEventListener('dom-ready', this.onDomReady)
+      webview.removeEventListener('did-fail-load', this.onDidFailLoad)
+      webview.removeEventListener('did-finish-load', this.onDidFinishLoad)
+      webview.removeEventListener('did-start-loading', this.onDidStartLoading)
+      if (this.props.onMessage) {
+        webview.removeEventListener('ipc-message', this.onIPCMessage)
+      }
+      if (this.props.onNavigationStateChange) {
+        webview.removeEventListener('will-navigate', this.onWillNavigate)
+        webview.removeEventListener('did-navigate', this.onDidNavigate)
+      }
     }
-    if (this.props.onNavigationStateChange) {
-      this.webview &&
-        this.webview.removeEventListener('will-navigate', this.onWillNavigate)
-      this.webview &&
-        this.webview.removeEventListener('did-navigate', this.onDidNavigate)
-    }
-  }
-
-  bindWebView = (e: ?HTMLElement) => {
-    this.webview = e
   }
 
   onDomReady = () => {
-    if (this.webview && this.props.injectedJavaScript != null) {
-      this.webview.executeJavaScript(this.props.injectedJavaScript)
+    if (
+      this.webviewRef.current != null &&
+      this.props.injectedJavaScript != null
+    ) {
+      this.webviewRef.current.executeJavaScript(this.props.injectedJavaScript)
     }
   }
 
@@ -200,7 +167,8 @@ export default class WebView extends Component<Props, State> {
 
   postMessage = (message: string) => {
     if (this.props.onMessage) {
-      this.webview && this.webview.send('postMessage', message)
+      this.webviewRef.current &&
+        this.webviewRef.current.send('postMessage', message)
     } else {
       warning(
         false,
@@ -237,9 +205,10 @@ export default class WebView extends Component<Props, State> {
     }
 
     return createElement('webview', {
-      ref: this.bindWebView,
+      ref: this.webviewRef,
       src,
       ...extraProps,
+      // flowlint-next-line inexact-spread:off
       ...props,
     })
   }

@@ -1,6 +1,7 @@
 // @flow
 
-import React, { Component } from 'react'
+// $FlowFixMe: missing StrictMode definition
+import React, { Component, StrictMode } from 'react'
 import {
   ActivityIndicator,
   Alert,
@@ -198,19 +199,21 @@ export default class App extends Component<{}, State> {
     }
 
     return (
-      <View style={styles.layout}>
-        <View style={styles.titleView}>
-          <Text style={styles.titleText}>React Native Electron</Text>
+      <StrictMode>
+        <View style={styles.layout}>
+          <View style={styles.titleView}>
+            <Text style={styles.titleText}>React Native Electron</Text>
+          </View>
+          <View style={styles.subtitleView}>
+            <Text style={styles.subtitleText}>
+              Electron extensions to React Native for Web
+            </Text>
+          </View>
+          <NavBar active={website} onSelect={this.onSelect} />
+          {uriBar}
+          {webView}
         </View>
-        <View style={styles.subtitleView}>
-          <Text style={styles.subtitleText}>
-            Electron extensions to React Native for Web
-          </Text>
-        </View>
-        <NavBar active={website} onSelect={this.onSelect} />
-        {uriBar}
-        {webView}
-      </View>
+      </StrictMode>
     )
   }
 }

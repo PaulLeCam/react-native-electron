@@ -1,3 +1,8 @@
+## v0.6.0 (2018-05-23)
+
+* Updated Electron dependency to v2.0.
+* Updated React Native for Web dependency to v0.7.
+
 ## v0.5.1 (2018-04-20)
 
 Fixed missing export of `StatusBar` component.
