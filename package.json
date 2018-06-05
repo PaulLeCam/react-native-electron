@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -27,14 +27,17 @@
     "url": "https://github.com/PaulLeCam/react-native-electron/issues"
   },
   "homepage": "https://github.com/PaulLeCam/react-native-electron#readme",
-  "files": ["es/*", "lib/*"],
+  "files": [
+    "es/*",
+    "lib/*"
+  ],
   "dependencies": {
-    "warning": "^3.0.0"
+    "warning": "^4.0.0"
   },
   "peerDependencies": {
     "electron": "^2.0.0",
     "react": "^16.3.0",
-    "react-native-web": "^0.7.0"
+    "react-native-web": "^0.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -48,19 +51,19 @@
     "electron": "^2.0.2",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.47.1",
+    "eslint-plugin-flowtype": "^2.49.3",
     "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.8.2",
-    "flow-bin": "^0.72.0",
-    "prettier": "^1.12.1",
+    "eslint-plugin-react": "^7.9.1",
+    "flow-bin": "^0.73.0",
+    "prettier": "^1.13.4",
     "prettier-eslint": "^8.8.1",
     "prop-types": "^15.6.1",
-    "react": "^16.3.2",
-    "react-art": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-native-web": "^0.7.2",
+    "react": "^16.4.0",
+    "react-art": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-native-web": "^0.8.1",
     "rimraf": "^2.6.2",
-    "webpack": "^4.8.3",
+    "webpack": "^4.11.0",
     "webpack-serve": "^1.0.2"
   }
 }
