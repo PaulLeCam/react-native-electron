@@ -1,9 +1,13 @@
 {
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-export-namespace-from"
+  ],
   "env": {
     "development": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "targets": {
               "node": "current"
@@ -12,14 +16,14 @@
             "loose": true
           }
         ],
-        "react",
-        "stage-0"
+        "@babel/preset-flow",
+        "@babel/preset-react"
       ]
     },
     "cjs": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "targets": {
               "electron": "2.0"
@@ -28,14 +32,14 @@
             "loose": true
           }
         ],
-        "react",
-        "stage-0"
+        "@babel/preset-flow",
+        "@babel/preset-react"
       ]
     },
     "esm": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "targets": {
               "electron": "2.0"
@@ -44,8 +48,8 @@
             "loose": true
           }
         ],
-        "react",
-        "stage-0"
+        "@babel/preset-flow",
+        "@babel/preset-react"
       ]
     }
   }

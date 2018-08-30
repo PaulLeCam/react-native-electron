@@ -30,7 +30,7 @@ type State = {
 }
 
 export default class WebView extends Component<Props, State> {
-  state: State = {
+  state = {
     viewState: 'IDLE',
     lastErrorEvent: null,
   }
