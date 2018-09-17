@@ -1,3 +1,8 @@
+## v0.8.0 (2018-09-17)
+
+- Updated React Native for Web dependency to v0.9.
+- Updated Babel to v7.
+
 ## v0.7.0 (2018-06-05)
 
 Updated React Native for Web dependency to v0.8.
