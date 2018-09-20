@@ -28,9 +28,9 @@ See the `example` directory for the source code and Webpack config.
 
 To run the demo app, fork this repository and run:
 
-* `npm install`
-* `npm run example:server`
-* In another terminal instance, `npm run example:electron`
+- `npm install`
+- `npm run example:server`
+- In another terminal instance, `npm run example:electron`
 
 For a more advanced example, see the [GH Viewer client](https://github.com/gh-viewer/client) using this library among others of the React ecosystem.
 
@@ -83,18 +83,18 @@ Loading this preload script uses node's `__dirname`, make sure your application 
 
 **Props**
 
-* `injectedJavaScript?: string`: JS code executed after the `dom-ready` event is fired.
-* `onError?: (event: Event) => void`
-* `onLoad?: (event: Event) => void`
-* `onLoadEnd?: (event: Event) => void`
-* `onLoadStart?: (event: Event) => void`
-* `onMessage?: (event: Event) => void`
-* `onNavigationStateChange?: (state: {loading: boolean, url: string}) => void`
-* `source: {uri: string} | {html: string}`
+- `injectedJavaScript?: string`: JS code executed after the `dom-ready` event is fired.
+- `onError?: (event: Event) => void`
+- `onLoad?: (event: Event) => void`
+- `onLoadEnd?: (event: Event) => void`
+- `onLoadStart?: (event: Event) => void`
+- `onMessage?: (event: Event) => void`
+- `onNavigationStateChange?: (state: {loading: boolean, url: string}) => void`
+- `source: {uri: string} | {html: string}`
 
 **Methods**
 
-* `postMessage (message: string): void`. This method can only be called if the `onMessage()` prop is provided.
+- `postMessage (message: string): void`. This method can only be called if the `onMessage()` prop is provided.
 
 ## License
 
