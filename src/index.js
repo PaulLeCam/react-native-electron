@@ -30,7 +30,6 @@ export {
   NetInfo,
   PanResponder,
   PixelRatio,
-  Platform,
   Share,
   StyleSheet,
   UIManager,
@@ -108,6 +107,7 @@ export {
 export * as Alert from './apis/Alert'
 export * as Clipboard from './apis/Clipboard'
 export * as Linking from './apis/Linking'
+export * as Platform from './apis/Platform'
 
 // components
 export { default as WebView } from './components/WebView'
