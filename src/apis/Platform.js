@@ -1,21 +1,21 @@
 // @flow
 
+const normalizeOS = platform => {
+  switch (platform) {
+    case "win32":
+      return "windows";
+    case "darwin":
+      return "macos";
+    case "linux":
+      return "linux";
+    default:
+      return "web";
+  }
+};
 
-let OS
-switch (process.platform) {
-  case 'win32':
-    OS = 'windows'
-    break
-  case 'darwin':
-    OS = 'macos'
-    break
-  case 'linux':
-    OS = 'linux'
-    break
-  default:
-    OS = 'web'
-    break
-}
-export const OS
+export const OS = normalizeOS(process.platform);
 
-export const select = (obj: Object) => (process.platform in obj ? obj[process.platform] : obj.default)
+export const select = (obj: Object) =>
+  normalizeOS(process.platform) in obj
+    ? obj[normalizeOS(process.platform)]
+    : obj.default;
