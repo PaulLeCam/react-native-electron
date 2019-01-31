@@ -1,6 +1,5 @@
 // @flow
 
-// $FlowFixMe: missing StrictMode definition
 import React, { Component, StrictMode } from 'react'
 import {
   ActivityIndicator,
@@ -20,7 +19,7 @@ const WEBSITES = {
     'https://facebook.github.io/react-native/docs/getting-started.html',
   'React Native for Web':
     'https://github.com/necolas/react-native-web/blob/master/README.md',
-  Electron: 'http://electron.atom.io/docs/',
+  Electron: 'https://electronjs.org/docs/',
 }
 
 type WebSite = $Keys<typeof WEBSITES>
