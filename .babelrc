@@ -1,4 +1,5 @@
 {
+  "presets": ["@babel/preset-flow", "@babel/preset-react"],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-export-namespace-from"
@@ -15,9 +16,7 @@
             "modules": "commonjs",
             "loose": true
           }
-        ],
-        "@babel/preset-flow",
-        "@babel/preset-react"
+        ]
       ]
     },
     "cjs": {
@@ -31,9 +30,7 @@
             "modules": "commonjs",
             "loose": true
           }
-        ],
-        "@babel/preset-flow",
-        "@babel/preset-react"
+        ]
       ]
     },
     "esm": {
@@ -47,9 +44,7 @@
             "modules": false,
             "loose": true
           }
-        ],
-        "@babel/preset-flow",
-        "@babel/preset-react"
+        ]
       ]
     }
   }

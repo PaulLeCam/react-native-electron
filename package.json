@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -10,7 +10,7 @@
     "compile:lib": "BABEL_ENV=cjs babel src --out-dir lib",
     "compile:es": "BABEL_ENV=esm babel src --out-dir es",
     "build": "npm run clean && npm run compile:lib && npm run compile:es",
-    "example:server": "webpack-serve ./example/webpack.config.js",
+    "example:server": "webpack-dev-server --config ./example/webpack.config.js",
     "example:electron": "electron ./example/app/main.js",
     "flow": "flow check",
     "prepublishOnly": "npm run build",
@@ -32,40 +32,40 @@
     "lib/*"
   ],
   "dependencies": {
-    "warning": "^4.0.0"
+    "warning": "^4.0.3"
   },
   "peerDependencies": {
     "electron": "^4.0.0",
     "react": "^16.7.0",
-    "react-native-web": "^0.10.0"
+    "react-native-web": "^0.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-env": "^7.3.4",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
-    "electron": "^4.0.3",
-    "eslint": "^5.12.1",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-flowtype": "^3.2.1",
+    "electron": "^4.1.0",
+    "eslint": "^5.15.2",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-flowtype": "^3.4.2",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "flow-bin": "^0.91.0",
-    "prettier": "^1.16.3",
+    "flow-bin": "^0.95.1",
+    "prettier": "^1.16.4",
     "prettier-eslint": "^8.8.2",
-    "prop-types": "^15.6.2",
-    "react": "^16.7.0",
-    "react-art": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-native-web": "^0.10.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-native-web": "^0.11.1",
     "rimraf": "^2.6.3",
-    "webpack": "^4.29.0",
-    "webpack-serve": "^2.0.3"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   }
 }

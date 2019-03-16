@@ -37,7 +37,6 @@ export {
   Vibration,
   // components
   ActivityIndicator,
-  ART,
   Button,
   CheckBox,
   FlatList,

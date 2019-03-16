@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
   mode: 'development',
   entry: {
-    app: path.resolve(__dirname, 'app', 'renderer.js'),
+    app: path.join(__dirname, 'app', 'renderer.js'),
   },
   node: {
     __filename: true,
@@ -27,8 +27,8 @@ module.exports = {
     filename: 'bundle.js',
   },
   target: 'electron-renderer',
-  serve: {
-    content: [path.resolve(__dirname, 'app')],
+  devServer: {
+    contentBase: path.join(__dirname, 'app'),
     port: 7000,
   },
 }

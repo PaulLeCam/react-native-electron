@@ -204,11 +204,11 @@ export default class WebView extends Component<Props, State> {
       src = `data:text/html,${source.html}`
     }
 
+    // flowlint-next-line inexact-spread:off
     return createElement('webview', {
       ref: this.webviewRef,
       src,
       ...extraProps,
-      // flowlint-next-line inexact-spread:off
       ...props,
     })
   }

@@ -1,3 +1,8 @@
+## v0.11.0 (2019-03-17)
+
+- Updated React Native for Web dependency to v0.11.
+- Removed `ART` export as it's been removed from React Native for Web.
+
 ## v0.10.0 (2019-01-31)
 
 - Updated Electron dependency to v4.0.
