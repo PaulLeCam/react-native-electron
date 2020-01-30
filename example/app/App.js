@@ -1,8 +1,7 @@
 // @flow
 
-import React, { Component, StrictMode } from 'react'
+import React, { StrictMode, useState } from 'react'
 import {
-  ActivityIndicator,
   Alert,
   Clipboard,
   Linking,
@@ -11,7 +10,6 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
-  WebView,
 } from 'react-native'
 
 const WEBSITES = {
@@ -24,7 +22,6 @@ const WEBSITES = {
 
 type WebSite = $Keys<typeof WEBSITES>
 
-const WHITE = '#FFFFFF'
 const GREY_LIGHT = '#EEEEEE'
 const GREY_DARK = '#333333'
 
@@ -118,14 +115,13 @@ const NavBar = ({
   return <View style={styles.navBar}>{tabs}</View>
 }
 
-const UriBar = ({ loading, uri }: { loading: boolean, uri: string }) => (
+const UriBar = ({ uri }: { uri: string }) => (
   <View style={styles.uriBar}>
     <View style={styles.uriValueView}>
       <Text numberOfLines={1} style={styles.uriText}>
         {uri}
       </Text>
     </View>
-    <ActivityIndicator animating={loading} color={WHITE} />
     <TouchableOpacity
       onPress={function() {
         copyURI(uri)
@@ -153,66 +149,34 @@ const SelectUriBar = () => (
   </View>
 )
 
-type State = {
-  loading: boolean,
-  website: ?WebSite,
-}
+const App = () => {
+  const [website, setWebSite] = useState<?WebSite>(null)
 
-export default class App extends Component<{}, State> {
-  state = {
-    loading: false,
-    website: null,
+  let uri
+  let uriBar
+  if (website) {
+    uri = WEBSITES[website]
+    uriBar = <UriBar uri={uri} />
+  } else {
+    uriBar = <SelectUriBar />
   }
 
-  onLoadStart = () => {
-    this.setState({ loading: true })
-  }
-
-  onLoadEnd = () => {
-    this.setState({ loading: false })
-  }
-
-  onSelect = (website: WebSite) => {
-    this.setState({ website })
-  }
-
-  render() {
-    const { loading, website } = this.state
-
-    let uri
-    let uriBar
-    let webView = null
-    if (website) {
-      uri = WEBSITES[website]
-      uriBar = <UriBar loading={loading} uri={uri} />
-      webView = (
-        <WebView
-          onLoadStart={this.onLoadStart}
-          onLoadEnd={this.onLoadEnd}
-          source={{ uri }}
-          style={styles.webView}
-        />
-      )
-    } else {
-      uriBar = <SelectUriBar />
-    }
-
-    return (
-      <StrictMode>
-        <View style={styles.layout}>
-          <View style={styles.titleView}>
-            <Text style={styles.titleText}>React Native Electron</Text>
-          </View>
-          <View style={styles.subtitleView}>
-            <Text style={styles.subtitleText}>
-              Electron extensions to React Native for Web
-            </Text>
-          </View>
-          <NavBar active={website} onSelect={this.onSelect} />
-          {uriBar}
-          {webView}
+  return (
+    <StrictMode>
+      <View style={styles.layout}>
+        <View style={styles.titleView}>
+          <Text style={styles.titleText}>React Native Electron</Text>
         </View>
-      </StrictMode>
-    )
-  }
+        <View style={styles.subtitleView}>
+          <Text style={styles.subtitleText}>
+            Electron extensions to React Native for Web
+          </Text>
+        </View>
+        <NavBar active={website} onSelect={setWebSite} />
+        {uriBar}
+      </View>
+    </StrictMode>
+  )
 }
+
+export default App

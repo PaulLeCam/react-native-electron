@@ -31,8 +31,8 @@
   },
   "settings": {
     "react": {
-      "version": "16.7",
-      "flowVersion": "0.95"
+      "version": "16.12",
+      "flowVersion": "0.117"
     }
   }
 }

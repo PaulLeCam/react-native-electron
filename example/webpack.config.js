@@ -5,10 +5,6 @@ module.exports = {
   entry: {
     app: path.join(__dirname, 'app', 'renderer.js'),
   },
-  node: {
-    __filename: true,
-    __dirname: true,
-  },
   module: {
     rules: [
       {
@@ -20,7 +16,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react-native': path.resolve(__dirname, '..', 'src'),
+      'react-native': path.resolve(__dirname, '../src'),
     },
   },
   output: {

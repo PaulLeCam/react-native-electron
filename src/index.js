@@ -2,22 +2,17 @@
 
 // Export the full public API of react-native-web
 export {
-  // top-level API
-  createElement,
+  unstable_createElement,
   findNodeHandle,
+  processColor,
   render,
   unmountComponentAtNode,
-  // modules
-  processColor,
   NativeModules,
-  TextPropTypes,
-  ViewPropTypes,
   // APIs
   AccessibilityInfo,
   Animated,
   AppRegistry,
   AppState,
-  AsyncStorage,
   BackHandler,
   DeviceInfo,
   Dimensions,
@@ -27,7 +22,6 @@ export {
   Keyboard,
   LayoutAnimation,
   NativeEventEmitter,
-  NetInfo,
   PanResponder,
   PixelRatio,
   Platform,
@@ -43,7 +37,6 @@ export {
   Image,
   ImageBackground,
   KeyboardAvoidingView,
-  ListView,
   Modal,
   Picker,
   ProgressBar,
@@ -51,10 +44,7 @@ export {
   SafeAreaView,
   ScrollView,
   SectionList,
-  Slider,
   StatusBar,
-  SwipeableFlatList,
-  SwipeableListView,
   Switch,
   Text,
   TextInput,
@@ -66,47 +56,24 @@ export {
   View,
   VirtualizedList,
   YellowBox,
-  // propTypes
-  ColorPropType,
-  EdgeInsetsPropType,
-  PointPropType,
   // compat (components)
-  DatePickerIOS,
   DrawerLayoutAndroid,
-  ImageEditor,
-  ImageStore,
   InputAccessoryView,
-  MaskedViewIOS,
-  NavigatorIOS,
-  PickerIOS,
-  ProgressBarAndroid,
-  ProgressViewIOS,
-  SegmentedControlIOS,
-  SnapshotViewIOS,
   TabBarIOS,
   ToastAndroid,
-  ToolbarAndroid,
-  ViewPagerAndroid,
   // compat (apis)
-  ActionSheetIOS,
-  AlertIOS,
-  CameraRoll,
-  DatePickerAndroid,
-  ImagePickerIOS,
   PermissionsAndroid,
-  PushNotificationIOS,
   Settings,
-  StatusBarIOS,
   Systrace,
   TimePickerAndroid,
   TVEventHandler,
-  VibrationIOS,
+  // plugins
+  DeviceEventEmitter,
+  // hooks
+  useWindowDimensions,
 } from 'react-native-web'
 
 // APIs
 export * as Alert from './apis/Alert'
 export * as Clipboard from './apis/Clipboard'
 export * as Linking from './apis/Linking'
-
-// components
-export { default as WebView } from './components/WebView'

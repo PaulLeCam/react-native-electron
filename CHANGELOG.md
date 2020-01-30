@@ -1,3 +1,9 @@
+## v0.12.0 (2020-01-30)
+
+- Updated React Native for Web dependency to v0.12.
+- Updated Electron dependency to v7.0.
+- Removed `WebView` component as it's been removed from React Native.
+
 ## v0.11.0 (2019-03-17)
 
 - Updated React Native for Web dependency to v0.11.

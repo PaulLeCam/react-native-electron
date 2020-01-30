@@ -1,9 +1,6 @@
 {
   "presets": ["@babel/preset-flow", "@babel/preset-react"],
-  "plugins": [
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-export-namespace-from"
-  ],
+  "plugins": ["@babel/plugin-proposal-export-namespace-from"],
   "env": {
     "development": {
       "presets": [
@@ -25,7 +22,7 @@
           "@babel/preset-env",
           {
             "targets": {
-              "electron": "4.0"
+              "electron": "7.0"
             },
             "modules": "commonjs",
             "loose": true
@@ -39,7 +36,7 @@
           "@babel/preset-env",
           {
             "targets": {
-              "electron": "4.0"
+              "electron": "7.0"
             },
             "modules": false,
             "loose": true
