@@ -23,7 +23,7 @@ export const alert = (
   remote.dialog
     .showMessageBox(remote.getCurrentWindow(), {
       type,
-      buttons: buttons.map(b => b.text),
+      buttons: buttons.map((b) => b.text),
       message: title,
       detail: message,
     })

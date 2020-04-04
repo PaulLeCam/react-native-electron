@@ -1,3 +1,8 @@
+## v0.13.0 (2020-04-04)
+
+- Updated Electron dependency to v8.0.
+- Added `Appearance` API and `useColorScheme` hook introduced in React Native v0.62.
+
 ## v0.12.0 (2020-01-30)
 
 - Updated React Native for Web dependency to v0.12.

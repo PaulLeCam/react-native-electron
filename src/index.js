@@ -75,5 +75,9 @@ export {
 
 // APIs
 export * as Alert from './apis/Alert'
+export * as Appearance from './apis/Appearance'
 export * as Clipboard from './apis/Clipboard'
 export * as Linking from './apis/Linking'
+
+// hooks
+export { useColorScheme } from './hooks/useColorScheme'

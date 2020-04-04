@@ -10,11 +10,11 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
+  useColorScheme,
 } from 'react-native'
 
 const WEBSITES = {
-  'React Native':
-    'https://facebook.github.io/react-native/docs/getting-started.html',
+  'React Native': 'https://reactnative.dev/docs/getting-started',
   'React Native for Web':
     'https://github.com/necolas/react-native-web/blob/master/README.md',
   Electron: 'https://electronjs.org/docs/',
@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
+  layoutDark: {
+    backgroundColor: GREY_DARK,
+  },
   titleView: {
     padding: 20,
     paddingBottom: 0,
@@ -37,6 +40,9 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 32,
     textAlign: 'center',
+  },
+  titleTextDark: {
+    color: GREY_LIGHT,
   },
   subtitleView: {
     padding: 10,
@@ -46,9 +52,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
   },
+  subtitleTextDark: {
+    color: GREY_LIGHT,
+  },
   navBar: {
     backgroundColor: GREY_LIGHT,
-    flex: 1,
     flexDirection: 'row',
   },
   navBarTab: {
@@ -62,7 +70,6 @@ const styles = StyleSheet.create({
   },
   uriBar: {
     backgroundColor: GREY_DARK,
-    flex: 1,
     flexDirection: 'row',
   },
   uriValueView: {
@@ -99,7 +106,7 @@ const NavBar = ({
   const tabs = Object.keys(WEBSITES).map((website: WebSite) => (
     <TouchableWithoutFeedback
       key={website}
-      onPress={function() {
+      onPress={function () {
         onSelect(website)
       }}>
       <View
@@ -123,14 +130,14 @@ const UriBar = ({ uri }: { uri: string }) => (
       </Text>
     </View>
     <TouchableOpacity
-      onPress={function() {
+      onPress={function () {
         copyURI(uri)
       }}
       style={styles.uriTouchable}>
       <Text style={styles.uriText}>Copy to clipboard</Text>
     </TouchableOpacity>
     <TouchableOpacity
-      onPress={function() {
+      onPress={function () {
         openURI(uri)
       }}
       style={styles.uriTouchable}>
@@ -149,7 +156,15 @@ const SelectUriBar = () => (
   </View>
 )
 
+function schemeStyle(styleName, colorScheme) {
+  const baseStyle = styles[styleName]
+  return colorScheme === 'dark'
+    ? [baseStyle, styles[`${styleName}Dark`]]
+    : baseStyle
+}
+
 const App = () => {
+  const colorScheme = useColorScheme()
   const [website, setWebSite] = useState<?WebSite>(null)
 
   let uri
@@ -163,12 +178,14 @@ const App = () => {
 
   return (
     <StrictMode>
-      <View style={styles.layout}>
+      <View style={schemeStyle('layout', colorScheme)}>
         <View style={styles.titleView}>
-          <Text style={styles.titleText}>React Native Electron</Text>
+          <Text style={schemeStyle('titleText', colorScheme)}>
+            React Native Electron
+          </Text>
         </View>
         <View style={styles.subtitleView}>
-          <Text style={styles.subtitleText}>
+          <Text style={schemeStyle('subtitleText', colorScheme)}>
             Electron extensions to React Native for Web
           </Text>
         </View>

@@ -22,7 +22,7 @@
           "@babel/preset-env",
           {
             "targets": {
-              "electron": "7.0"
+              "electron": "8.0"
             },
             "modules": "commonjs",
             "loose": true
@@ -36,7 +36,7 @@
           "@babel/preset-env",
           {
             "targets": {
-              "electron": "7.0"
+              "electron": "8.0"
             },
             "modules": false,
             "loose": true
