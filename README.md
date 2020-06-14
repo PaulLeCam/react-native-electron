@@ -32,6 +32,29 @@ To run the demo app, fork this repository and run:
 - `npm run example:server`
 - In another terminal instance, `npm run example:electron`
 
+## Usage with Expo application
+
+This module can be used with Expo application (created by `expo-cli`) using the following steps:
+
+- Follow [this guide's](https://docs.expo.io/guides/using-electron/) setup
+- Run `yarn expo-electron customize` in order to eject expo-electron's webpack configuration
+- Edit `./electron/webpack.config.js` as follows:
+
+```
+const { withExpoWebpack } = require('@expo/electron-adapter');
+
+module.exports = config => {
+	let expoConfig = withExpoWebpack(config);
+	
+	expoConfig.resolve.alias['react-native$'] = 'react-native-electron';
+	
+	return expoConfig;
+};
+
+```
+
+Note this is a partial solution, as Expo's default webpack configuration includes more aliases to `react-native`, but it should cover all of `react-native-electron`'s APIs.
+
 ## APIs
 
 ### Alert
