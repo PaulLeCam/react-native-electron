@@ -39,6 +39,7 @@ export {
   KeyboardAvoidingView,
   Modal,
   Picker,
+  Pressable,
   ProgressBar,
   RefreshControl,
   SafeAreaView,
@@ -59,13 +60,11 @@ export {
   // compat (components)
   DrawerLayoutAndroid,
   InputAccessoryView,
-  TabBarIOS,
   ToastAndroid,
   // compat (apis)
   PermissionsAndroid,
   Settings,
   Systrace,
-  TimePickerAndroid,
   TVEventHandler,
   // plugins
   DeviceEventEmitter,

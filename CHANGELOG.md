@@ -1,3 +1,8 @@
+## v0.14.0 (2020-07-11)
+
+- Updated React Native for Web dependency to v0.13.
+- Updated Electron dependency to v9.0.
+
 ## v0.13.0 (2020-04-04)
 
 - Updated Electron dependency to v8.0.
