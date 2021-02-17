@@ -11,9 +11,11 @@ export {
   // APIs
   AccessibilityInfo,
   Animated,
+  Appearance,
   AppRegistry,
   AppState,
   BackHandler,
+  Clipboard,
   DeviceInfo,
   Dimensions,
   Easing,
@@ -69,14 +71,16 @@ export {
   // plugins
   DeviceEventEmitter,
   // hooks
+  useColorScheme,
   useWindowDimensions,
 } from 'react-native-web'
 
 // APIs
 export * as Alert from './apis/Alert'
-export * as Appearance from './apis/Appearance'
-export * as Clipboard from './apis/Clipboard'
 export * as Linking from './apis/Linking'
 
-// hooks
-export { useColorScheme } from './hooks/useColorScheme'
+if (window.ReactNativeElectron == null) {
+  console.warn(
+    'Could not access React Native Electron APIs, make sure the "react-native-electron/preload.js" script is preloaded in this window.',
+  )
+}

@@ -1,3 +1,10 @@
+## v0.15.0 (2021-02-17)
+
+- Updated React Native for Web dependency to v0.15, that now has a peer dependency on React v17.0.
+- Updated Electron dependency to v11.0.
+- Removed custom `Appearance` and `Clipboard` APIs and `useColorScheme` hook, instead exporting the React Native Web implementation.
+- Updated logic to no longer require `webPreferences.nodeIntegration` to be set to `true` in Electron's `BrowserWindow` options.
+
 ## v0.14.0 (2020-07-11)
 
 - Updated React Native for Web dependency to v0.13.

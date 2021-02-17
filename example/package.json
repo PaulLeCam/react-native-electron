@@ -1,0 +1,53 @@
+{
+  "name": "example",
+  "productName": "React Native Electron",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Paul Le Cam",
+    "email": "paul@ulem.net"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react-native-electron": "file:../"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+    "@babel/preset-flow": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.54",
+    "babel-loader": "^8.2.2",
+    "electron": "11.2.3",
+    "node-loader": "^1.0.1"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.js",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

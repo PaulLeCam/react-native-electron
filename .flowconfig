@@ -4,7 +4,6 @@
 
 [lints]
 all=warn
-dynamic-export=off
 unclear-type=off
 
 [options]

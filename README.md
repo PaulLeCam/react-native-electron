@@ -4,9 +4,7 @@
 
 ## Introduction
 
-This project aims to provide extensions to [React Native for Web](https://github.com/necolas/react-native-web) targeted to the [Electron](https://www.electronjs.org) environment to support additional modules exposed by React Native (ex Clipboard, WebView) using Electron APIs.
-
-This is very early stage, not fully tested, and APIs will likely change between releases, so don't use this library if you need something stable.
+This project aims to provide extensions to [React Native for Web](https://github.com/necolas/react-native-web) targeted to the [Electron](https://www.electronjs.org) environment to support additional modules exposed by React Native (`Alert`) or alternative implementations (`Linking`) using Electron APIs.
 
 ## Installation
 
@@ -22,15 +20,35 @@ npm install electron react react-native-web
 
 `react-art` is also needed if you use `ART`.
 
+## Electron setup
+
+In order for the APIs exposed by `react-native-electron` to be accessible in Electron's render process, the following setup must be applied:
+
+- The `react-native-electron/main` module must be imported in the main process
+- `BrowserWindow` instances must be created with the following `webPreferences` options:
+
+```js
+webPreferences: {
+  contextIsolation: false,
+  preload: require('path').resolve(
+    require.resolve('react-native-electron/preload'),
+  ),
+},
+```
+
 ## Example
 
 See the `example` directory for the source code and Webpack config.
 
-To run the demo app, fork this repository and run:
+To run the demo app, fork this repository and run the following commands in the root folder:
 
 - `npm install`
-- `npm run example:server`
-- In another terminal instance, `npm run example:electron`
+- `npm run build`
+
+Then in the `example` folder:
+
+- `npm install`
+- `npm start`
 
 ## Usage with Expo application
 
@@ -40,17 +58,14 @@ This module can be used with Expo application (created by `expo-cli`) using the 
 - Run `yarn expo-electron customize` in order to eject expo-electron's webpack configuration
 - Edit `./electron/webpack.config.js` as follows:
 
-```
-const { withExpoWebpack } = require('@expo/electron-adapter');
+```js
+const { withExpoWebpack } = require('@expo/electron-adapter')
 
-module.exports = config => {
-	let expoConfig = withExpoWebpack(config);
-	
-	expoConfig.resolve.alias['react-native$'] = 'react-native-electron';
-	
-	return expoConfig;
-};
-
+module.exports = (config) => {
+  const expoConfig = withExpoWebpack(config)
+  expoConfig.resolve.alias['react-native$'] = 'react-native-electron'
+  return expoConfig
+}
 ```
 
 Note this is a partial solution, as Expo's default webpack configuration includes more aliases to `react-native`, but it should cover all of `react-native-electron`'s APIs.
@@ -61,7 +76,7 @@ Note this is a partial solution, as Expo's default webpack configuration include
 
 [React Native's Alert](https://reactnative.dev/docs/alert.html) implementation using [Electron's dialog](https://www.electronjs.org/docs/api/dialog/)
 
-```
+```js
 Alert.alert(
   title: string,
   message: ?string,
@@ -69,22 +84,6 @@ Alert.alert(
   type: ?('none' | 'info' | 'error' | 'question' | 'warning') = 'none'
 ): void
 ```
-
-### Appearance
-
-[React Native's Appearance](https://reactnative.dev/docs/appearance.html) implementation using [Electron's nativeTheme](https://www.electronjs.org/docs/api/native-theme/)
-
-```
-Appearance.getColorScheme(): 'light' | 'dark' | null
-```
-
-### Clipboard
-
-[React Native's Clipboard](https://reactnative.dev/docs/clipboard.html) implementation using [Electron's clipboard](https://www.electronjs.org/docs/api/clipboard/).
-
-`Clipboard.getString(type: ?string): Promise<?string>`
-
-`Clipboard.setString(text: string, type: ?string): void`
 
 ### Linking
 
@@ -99,10 +98,6 @@ Appearance.getColorScheme(): 'light' | 'dark' | null
 `Linking.canOpenURL(): Promise<true>`: always resolves to `true`
 
 `Linking.getInitialURL(): Promise<?string>`: resolves with the `process.argv[1]` value, expecting the app to be opened by a command such as `myapp myapp://test`
-
-## Hooks
-
-`useColorScheme(): 'light' | 'dark' | null`
 
 ## License
 

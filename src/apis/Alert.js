@@ -1,6 +1,6 @@
 // @flow
 
-import { remote } from 'electron'
+const remote = window.ReactNativeElectron
 
 type AlertButton = {
   text: string,
@@ -9,25 +9,20 @@ type AlertButton = {
 
 type AlertType = 'none' | 'info' | 'error' | 'question' | 'warning'
 
-type AlertRes = {
-  response: number,
-  checkboxChecked: boolean,
-}
-
 export const alert = (
   title: string,
   message: ?string,
   buttons: AlertButton[] = [],
   type: AlertType = 'none',
 ) => {
-  remote.dialog
-    .showMessageBox(remote.getCurrentWindow(), {
+  remote
+    .showAlert({
       type,
       buttons: buttons.map((b) => b.text),
       message: title,
       detail: message,
     })
-    .then(({ response }: AlertRes) => {
+    .then((response: number) => {
       const button = buttons[response]
       if (button && button.onPress) {
         button.onPress()

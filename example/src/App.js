@@ -1,5 +1,3 @@
-// @flow
-
 import React, { StrictMode, useState } from 'react'
 import {
   Alert,
@@ -15,12 +13,9 @@ import {
 
 const WEBSITES = {
   'React Native': 'https://reactnative.dev/docs/getting-started',
-  'React Native for Web':
-    'https://github.com/necolas/react-native-web/blob/master/README.md',
+  'React Native for Web': 'https://necolas.github.io/react-native-web/',
   Electron: 'https://electronjs.org/docs/',
 }
-
-type WebSite = $Keys<typeof WEBSITES>
 
 const GREY_LIGHT = '#EEEEEE'
 const GREY_DARK = '#333333'
@@ -87,23 +82,17 @@ const styles = StyleSheet.create({
   },
 })
 
-const copyURI = (uri: string) => {
+const copyURI = (uri) => {
   Clipboard.setString(uri)
   Alert.alert('Copy to clipboard', `Copied URI to clipboard: ${uri}`)
 }
 
-const openURI = (uri: string) => {
+const openURI = (uri) => {
   Linking.openURL(uri)
 }
 
-const NavBar = ({
-  active,
-  onSelect,
-}: {
-  active: ?WebSite,
-  onSelect: (website: WebSite) => void,
-}) => {
-  const tabs = Object.keys(WEBSITES).map((website: WebSite) => (
+const NavBar = ({ active, onSelect }) => {
+  const tabs = Object.keys(WEBSITES).map((website) => (
     <TouchableWithoutFeedback
       key={website}
       onPress={function () {
@@ -122,7 +111,7 @@ const NavBar = ({
   return <View style={styles.navBar}>{tabs}</View>
 }
 
-const UriBar = ({ uri }: { uri: string }) => (
+const UriBar = ({ uri }) => (
   <View style={styles.uriBar}>
     <View style={styles.uriValueView}>
       <Text numberOfLines={1} style={styles.uriText}>
@@ -163,9 +152,9 @@ function schemeStyle(styleName, colorScheme) {
     : baseStyle
 }
 
-const App = () => {
+export default function App() {
   const colorScheme = useColorScheme()
-  const [website, setWebSite] = useState<?WebSite>(null)
+  const [website, setWebSite] = useState(null)
 
   let uri
   let uriBar
@@ -195,5 +184,3 @@ const App = () => {
     </StrictMode>
   )
 }
-
-export default App

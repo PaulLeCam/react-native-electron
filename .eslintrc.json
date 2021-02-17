@@ -27,12 +27,13 @@
         "singleQuote": true,
         "trailingComma": "all"
       }
-    ]
+    ],
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {
-      "version": "16.13",
-      "flowVersion": "0.122"
+      "version": "17.0",
+      "flowVersion": "0.144"
     }
   }
 }
