@@ -4,25 +4,33 @@
     "es6": true
   },
   "extends": [
-    "plugin:flowtype/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
-    "prettier",
-    "prettier/flowtype",
-    "prettier/react"
+    "prettier"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
     "jsx": true,
+    "project": "tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["flowtype", "prettier", "react"],
+  "plugins": ["@typescript-eslint", "prettier", "react"],
   "rules": {
-    "no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
+    "no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
     "prettier/prettier": [
       "error",
       {
-        "jsxBracketSameLine": true,
+        "bracketSameLine": true,
         "semi": false,
         "singleQuote": true,
         "trailingComma": "all"
@@ -32,8 +40,7 @@
   },
   "settings": {
     "react": {
-      "version": "17.0",
-      "flowVersion": "0.144"
+      "version": "17.0"
     }
   }
 }

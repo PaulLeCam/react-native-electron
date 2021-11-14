@@ -5,7 +5,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react-native': require('path').resolve(__dirname, '../src'),
+      'react-native': require('path').resolve(__dirname, '..'),
     },
   },
 }

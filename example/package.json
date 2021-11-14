@@ -2,10 +2,12 @@
   "name": "example",
   "productName": "React Native Electron",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Example React Native Electron application",
   "main": ".webpack/main",
   "scripts": {
-    "start": "electron-forge start"
+    "start": "electron-forge start",
+    "make": "electron-forge make",
+    "package": "electron-forge package"
   },
   "keywords": [],
   "author": {
@@ -14,21 +16,25 @@
   },
   "license": "MIT",
   "dependencies": {
-    "react-native-electron": "file:../"
+    "react-native-electron": "link:.."
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
-    "@babel/preset-flow": "^7.12.13",
-    "@babel/preset-react": "^7.12.13",
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/plugin-webpack": "6.0.0-beta.54",
-    "babel-loader": "^8.2.2",
-    "electron": "11.2.3",
-    "node-loader": "^1.0.1"
+    "@babel/core": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.61",
+    "babel-loader": "^8.2.3",
+    "electron": "15.3.0",
+    "node-loader": "^2.0.0"
   },
   "config": {
     "forge": {
+      "makers": [
+        {
+          "name": "@electron-forge/maker-zip"
+        }
+      ],
       "packagerConfig": {},
       "plugins": [
         [
@@ -41,6 +47,9 @@
                 {
                   "html": "./src/index.html",
                   "js": "./src/renderer.js",
+                  "preload": {
+                    "js": "./node_modules/react-native-electron/preload.js"
+                  },
                   "name": "main_window"
                 }
               ]

@@ -1,37 +1,56 @@
 const { app, BrowserWindow } = require('electron')
 
-require('react-native-electron/main')
+let appWindow = null
 
 const createWindow = () => {
-  const window = new BrowserWindow({
+  appWindow = new BrowserWindow({
     width: 800,
     height: 600,
     show: false,
     webPreferences: {
-      contextIsolation: false,
-      preload: require('path').resolve(
-        require.resolve('react-native-electron/preload'),
-      ),
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   })
 
-  window.once('ready-to-show', () => {
-    window.show()
+  appWindow.once('ready-to-show', () => {
+    appWindow.show()
   })
 
-  window.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
+  appWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
 }
 
-app.on('ready', createWindow)
+const gotTheLock = app.requestSingleInstanceLock()
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
+if (!gotTheLock) {
+  app.quit()
+} else {
+  const { sendOpenURL } = require('react-native-electron/main')
 
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
+  app.on('second-instance', (event, argv) => {
+    if (appWindow != null) {
+      if (appWindow.isMinimized()) {
+        appWindow.restore()
+      }
+      if (typeof argv[1] === 'string') {
+        sendOpenURL(argv[1])
+      }
+      appWindow.focus()
+    }
+  })
+
+  app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+      app.quit()
+    }
+  })
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow()
+    }
+  })
+
+  app.whenReady().then(() => {
     createWindow()
-  }
-})
+  })
+}

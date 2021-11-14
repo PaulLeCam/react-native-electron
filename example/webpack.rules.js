@@ -5,7 +5,7 @@ module.exports = [
       loader: 'babel-loader',
       options: {
         exclude: /node_modules/,
-        presets: ['@babel/preset-flow', '@babel/preset-react'],
+        presets: ['@babel/preset-react'],
         plugins: ['@babel/plugin-proposal-export-namespace-from'],
       },
     },

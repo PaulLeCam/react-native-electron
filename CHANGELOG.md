@@ -1,3 +1,9 @@
+## v0.16.0 (2021-11-14)
+
+- Updated React Native for Web dependency to v0.17.
+- Updated Electron dependency to v15.0.
+- Updated internal logic to work with Electron's context isolation.
+
 ## v0.15.0 (2021-02-17)
 
 - Updated React Native for Web dependency to v0.15, that now has a peer dependency on React v17.0.

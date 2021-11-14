@@ -1,21 +1,19 @@
-// @flow
+import type { AlertType, ReactNativeElectron } from '../types'
 
-const remote = window.ReactNativeElectron
+const remote = window.ReactNativeElectron as unknown as ReactNativeElectron
 
 type AlertButton = {
-  text: string,
-  onPress?: () => void,
+  text: string
+  onPress?: () => void
 }
-
-type AlertType = 'none' | 'info' | 'error' | 'question' | 'warning'
 
 export const alert = (
   title: string,
-  message: ?string,
+  message?: string,
   buttons: AlertButton[] = [],
   type: AlertType = 'none',
 ) => {
-  remote
+  void remote
     .showAlert({
       type,
       buttons: buttons.map((b) => b.text),

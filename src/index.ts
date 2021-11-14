@@ -1,5 +1,3 @@
-// @flow
-
 // Export the full public API of react-native-web
 export {
   unstable_createElement,

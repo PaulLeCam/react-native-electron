@@ -1,4 +1,4 @@
-import React, { StrictMode, useState } from 'react'
+import React, { StrictMode, useEffect, useState } from 'react'
 import {
   Alert,
   Clipboard,
@@ -82,16 +82,15 @@ const styles = StyleSheet.create({
   },
 })
 
-const copyURI = (uri) => {
-  Clipboard.setString(uri)
-  Alert.alert('Copy to clipboard', `Copied URI to clipboard: ${uri}`)
+function getWebsite(nameOrURI) {
+  for (const [name, uri] of Object.entries(WEBSITES)) {
+    if (name === nameOrURI || uri === nameOrURI) {
+      return name
+    }
+  }
 }
 
-const openURI = (uri) => {
-  Linking.openURL(uri)
-}
-
-const NavBar = ({ active, onSelect }) => {
+function NavBar({ active, onSelect }) {
   const tabs = Object.keys(WEBSITES).map((website) => (
     <TouchableWithoutFeedback
       key={website}
@@ -111,39 +110,44 @@ const NavBar = ({ active, onSelect }) => {
   return <View style={styles.navBar}>{tabs}</View>
 }
 
-const UriBar = ({ uri }) => (
-  <View style={styles.uriBar}>
-    <View style={styles.uriValueView}>
-      <Text numberOfLines={1} style={styles.uriText}>
-        {uri}
-      </Text>
+function UriBar({ uri }) {
+  return (
+    <View style={styles.uriBar}>
+      <View style={styles.uriValueView}>
+        <Text numberOfLines={1} style={styles.uriText}>
+          {uri}
+        </Text>
+      </View>
+      <TouchableOpacity
+        onPress={function () {
+          Clipboard.setString(uri)
+          Alert.alert('Copy to clipboard', `Copied URI to clipboard: ${uri}`)
+        }}
+        style={styles.uriTouchable}>
+        <Text style={styles.uriText}>Copy to clipboard</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={function () {
+          Linking.openURL(uri)
+        }}
+        style={styles.uriTouchable}>
+        <Text style={styles.uriText}>Open in browser</Text>
+      </TouchableOpacity>
     </View>
-    <TouchableOpacity
-      onPress={function () {
-        copyURI(uri)
-      }}
-      style={styles.uriTouchable}>
-      <Text style={styles.uriText}>Copy to clipboard</Text>
-    </TouchableOpacity>
-    <TouchableOpacity
-      onPress={function () {
-        openURI(uri)
-      }}
-      style={styles.uriTouchable}>
-      <Text style={styles.uriText}>Open in browser</Text>
-    </TouchableOpacity>
-  </View>
-)
+  )
+}
 
-const SelectUriBar = () => (
-  <View style={styles.uriBar}>
-    <View style={styles.uriValueView}>
-      <Text numberOfLines={1} style={styles.uriText}>
-        Select one of the projects above to load its documentation
-      </Text>
+function SelectUriBar() {
+  return (
+    <View style={styles.uriBar}>
+      <View style={styles.uriValueView}>
+        <Text numberOfLines={1} style={styles.uriText}>
+          Select one of the projects above to load its documentation
+        </Text>
+      </View>
     </View>
-  </View>
-)
+  )
+}
 
 function schemeStyle(styleName, colorScheme) {
   const baseStyle = styles[styleName]
@@ -155,6 +159,27 @@ function schemeStyle(styleName, colorScheme) {
 export default function App() {
   const colorScheme = useColorScheme()
   const [website, setWebSite] = useState(null)
+
+  useEffect(() => {
+    const handler = (e) => {
+      const match = getWebsite(e.url)
+      if (match != null) {
+        setWebSite(match)
+      }
+    }
+    Linking.addEventListener('url', handler)
+
+    Linking.getInitialURL().then((url) => {
+      const match = getWebsite(url)
+      if (match != null) {
+        setWebSite(match)
+      }
+    })
+
+    return () => {
+      Linking.removeEventListener('url', handler)
+    }
+  }, [])
 
   let uri
   let uriBar

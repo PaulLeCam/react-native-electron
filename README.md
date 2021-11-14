@@ -25,11 +25,10 @@ npm install electron react react-native-web
 In order for the APIs exposed by `react-native-electron` to be accessible in Electron's render process, the following setup must be applied:
 
 - The `react-native-electron/main` module must be imported in the main process
-- `BrowserWindow` instances must be created with the following `webPreferences` options:
+- `BrowserWindow` instances must be created with the `preload` script from `react-native-electron/preload`, for example:
 
 ```js
 webPreferences: {
-  contextIsolation: false,
   preload: require('path').resolve(
     require.resolve('react-native-electron/preload'),
   ),
@@ -42,13 +41,13 @@ See the `example` directory for the source code and Webpack config.
 
 To run the demo app, fork this repository and run the following commands in the root folder:
 
-- `npm install`
-- `npm run build`
+- `yarn install`
+- `yarn build`
 
 Then in the `example` folder:
 
-- `npm install`
-- `npm start`
+- `yarn install`
+- `yarn start`
 
 ## Usage with Expo application
 

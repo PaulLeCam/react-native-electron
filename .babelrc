@@ -1,5 +1,5 @@
 {
-  "presets": ["@babel/preset-flow", "@babel/preset-react"],
+  "presets": ["@babel/preset-react", "@babel/preset-typescript"],
   "plugins": ["@babel/plugin-proposal-export-namespace-from"],
   "env": {
     "development": {
@@ -22,7 +22,7 @@
           "@babel/preset-env",
           {
             "targets": {
-              "electron": "11.0"
+              "electron": "15.0"
             },
             "modules": "commonjs",
             "loose": true
@@ -36,7 +36,7 @@
           "@babel/preset-env",
           {
             "targets": {
-              "electron": "11.0"
+              "electron": "15.0"
             },
             "modules": false,
             "loose": true
