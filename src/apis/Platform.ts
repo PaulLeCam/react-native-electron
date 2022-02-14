@@ -4,7 +4,9 @@ const remote = window.ReactNativeElectron as ReactNativeElectron
 
 export const isElectron = true
 
-export const OS = remote.platform
+export const OS = 'web'
+
+export const nativeOS = remote.platform
 
 export const select = (selection: PlatformSelection): unknown => {
   if (remote && remote.platform in selection) return selection[remote.platform]

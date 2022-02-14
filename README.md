@@ -106,6 +106,8 @@ Alert.alert(
 
 `Platform.OS: string`
 
+`Platform.nativeOS: string`
+
 ```ts
 Platform.select(
   win32?: any,
