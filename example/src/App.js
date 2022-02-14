@@ -201,7 +201,7 @@ export default function App() {
         </View>
         <View style={styles.subtitleView}>
           <Text style={schemeStyle('subtitleText', colorScheme)}>
-            Electron extensions to React Native for Web on {Platform.OS}
+            Electron extensions to React Native for Web on {Platform.nativeOS}
           </Text>
         </View>
         <NavBar active={website} onSelect={setWebSite} />
