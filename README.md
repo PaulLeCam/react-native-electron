@@ -98,6 +98,25 @@ Alert.alert(
 
 `Linking.getInitialURL(): Promise<?string>`: resolves with the `process.argv[1]` value, expecting the app to be opened by a command such as `myapp myapp://test`
 
+### Platform
+
+[React Native's Platform](https://reactnative.dev/docs/platform.html)
+
+`Platform.isElectron: bool`
+
+`Platform.OS: string`
+
+```ts
+Platform.select(
+  win32?: any,
+  linux?: any,
+  darwin?: any,
+  electron?: any,
+  web?: any,
+  default?: any
+): any
+```
+
 ## License
 
 MIT  
