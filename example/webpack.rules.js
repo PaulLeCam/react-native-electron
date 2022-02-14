@@ -6,7 +6,7 @@ module.exports = [
       options: {
         exclude: /node_modules/,
         presets: ['@babel/preset-react'],
-        plugins: ['@babel/plugin-proposal-export-namespace-from'],
+        plugins: ['@babel/plugin-proposal-export-namespace-from', 'react-native-electron/plugin'],
       },
     },
   },
