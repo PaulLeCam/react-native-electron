@@ -76,6 +76,7 @@ export {
 // APIs
 export * as Alert from './apis/Alert'
 export * as Linking from './apis/Linking'
+export * as Platform from './apis/Platform'
 
 if (window.ReactNativeElectron == null) {
   console.warn(

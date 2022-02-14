@@ -17,4 +17,14 @@ export type ReactNativeElectron = {
   getInitialURL(): Promise<string | null>
   openURL(_url: string): Promise<void>
   showAlert(_config: ShowAlertConfig): Promise<number>
+  platform: string
+}
+
+export type PlatformSelection = {
+  win32?: unknown
+  linux?: unknown
+  darwin?: unknown
+  electron?: unknown
+  web?: unknown
+  default?: unknown
 }

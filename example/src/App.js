@@ -1,5 +1,6 @@
 import React, { StrictMode, useEffect, useState } from 'react'
 import {
+  Platform,
   Alert,
   Clipboard,
   Linking,
@@ -200,7 +201,7 @@ export default function App() {
         </View>
         <View style={styles.subtitleView}>
           <Text style={schemeStyle('subtitleText', colorScheme)}>
-            Electron extensions to React Native for Web
+            Electron extensions to React Native for Web on {Platform.OS}
           </Text>
         </View>
         <NavBar active={website} onSelect={setWebSite} />
