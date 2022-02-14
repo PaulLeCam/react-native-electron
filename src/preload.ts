@@ -27,7 +27,7 @@ async function showAlert(config: ShowAlertConfig): Promise<void> {
 
 const platform: string = os.platform()
 
-contextBridge.exposeInMainWorld('ReactNativeElectron', {
+const exposeData = {
   appOpenURL: {
     addListener: addAppOpenURLListener,
     removeListener: removeAppOpenURLListener,
@@ -36,4 +36,10 @@ contextBridge.exposeInMainWorld('ReactNativeElectron', {
   openURL,
   showAlert,
   platform,
-})
+}
+
+try {
+  contextBridge.exposeInMainWorld('ReactNativeElectron', exposeData)
+} catch {
+  window.ReactNativeElectron = exposeData
+}
