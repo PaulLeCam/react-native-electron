@@ -102,7 +102,7 @@ Alert.alert(
 
 [React Native's Platform](https://reactnative.dev/docs/platform.html)
 
-`Platform.isElectron: bool`
+`Platform.isElectron: boolean`
 
 `Platform.OS: string`
 
