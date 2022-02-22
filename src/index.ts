@@ -24,7 +24,6 @@ export {
   NativeEventEmitter,
   PanResponder,
   PixelRatio,
-  Platform,
   Share,
   StyleSheet,
   UIManager,

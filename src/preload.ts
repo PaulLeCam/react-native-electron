@@ -1,5 +1,3 @@
-import * as os from 'os'
-
 import { contextBridge, ipcRenderer } from 'electron'
 
 import type { Listener, ShowAlertConfig } from './types'
@@ -25,9 +23,7 @@ async function showAlert(config: ShowAlertConfig): Promise<void> {
   await ipcRenderer.invoke('react-native-show-alert', config)
 }
 
-const platform: string = os.platform()
-
-const exposeData = {
+contextBridge.exposeInMainWorld('ReactNativeElectron', {
   appOpenURL: {
     addListener: addAppOpenURLListener,
     removeListener: removeAppOpenURLListener,
@@ -35,11 +31,5 @@ const exposeData = {
   getInitialURL,
   openURL,
   showAlert,
-  platform,
-}
-
-try {
-  contextBridge.exposeInMainWorld('ReactNativeElectron', exposeData)
-} catch {
-  window.ReactNativeElectron = exposeData
-}
+  platform: process.platform,
+})
