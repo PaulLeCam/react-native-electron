@@ -1,3 +1,8 @@
+## v0.17.0 (2022-02-26)
+
+- Updated Electron dependency to v17.0.
+- Added `Platform` API ([PR #26](https://github.com/PaulLeCam/react-native-electron/pull/26) by [hans00](https://github.com/hans00)).
+
 ## v0.16.0 (2021-11-14)
 
 - Updated React Native for Web dependency to v0.17.
