@@ -31,4 +31,5 @@ contextBridge.exposeInMainWorld('ReactNativeElectron', {
   getInitialURL,
   openURL,
   showAlert,
+  platform: process.platform,
 })
