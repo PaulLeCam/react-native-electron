@@ -1,6 +1,6 @@
 import type { AlertType, ReactNativeElectron } from '../types'
 
-const remote = window.ReactNativeElectron as unknown as ReactNativeElectron
+const remote = window.ReactNativeElectron as ReactNativeElectron
 
 type AlertButton = {
   text: string

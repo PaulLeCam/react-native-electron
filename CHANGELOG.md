@@ -1,3 +1,9 @@
+## v0.18.0 (2022-08-06)
+
+- Updated React dependency to v18.
+- Updated React Native for Web dependency to v0.18.
+- Updated Electron dependency to v20.0.
+
 ## v0.17.0 (2022-02-26)
 
 - Updated Electron dependency to v17.0.
