@@ -1,0 +1,15 @@
+{
+  "name": "react-native-electron-repo",
+  "version": "0.19.0",
+  "description": "Electron extensions to React Native for Web",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulLeCam/react-native-electron.git"
+  },
+  "author": "Paul Le Cam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulLeCam/react-native-electron/issues"
+  },
+  "homepage": "https://github.com/PaulLeCam/react-native-electron#readme"
+}

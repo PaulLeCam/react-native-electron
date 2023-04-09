@@ -12,9 +12,7 @@ export {
   Appearance,
   AppRegistry,
   AppState,
-  BackHandler,
   Clipboard,
-  DeviceInfo,
   Dimensions,
   Easing,
   I18nManager,
@@ -56,15 +54,6 @@ export {
   View,
   VirtualizedList,
   YellowBox,
-  // compat (components)
-  DrawerLayoutAndroid,
-  InputAccessoryView,
-  ToastAndroid,
-  // compat (apis)
-  PermissionsAndroid,
-  Settings,
-  Systrace,
-  TVEventHandler,
   // plugins
   DeviceEventEmitter,
   // hooks
