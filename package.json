@@ -11,5 +11,16 @@
   "bugs": {
     "url": "https://github.com/PaulLeCam/react-native-electron/issues"
   },
-  "homepage": "https://github.com/PaulLeCam/react-native-electron#readme"
+  "homepage": "https://github.com/PaulLeCam/react-native-electron#readme",
+  "scripts": {
+    "lint": "biome check --write",
+    "build": "cd library && pnpm run build",
+    "start": "cd example && pnpm start"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@swc/cli": "0.4.1-nightly.20240914",
+    "@swc/core": "^1.7.39",
+    "del-cli": "^6.0.0"
+  }
 }

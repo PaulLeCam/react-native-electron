@@ -1,3 +1,8 @@
+## v0.20.0 (2024-10-25)
+
+- Updated Electron dependency to v33.0.
+- Refactored setup.
+
 ## v0.19.0 (2023-04-09)
 
 - Updated React Native for Web dependency to v0.19.

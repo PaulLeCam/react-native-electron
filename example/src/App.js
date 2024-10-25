@@ -1,9 +1,9 @@
 import React, { StrictMode, useEffect, useState } from 'react'
 import {
-  Platform,
   Alert,
   Clipboard,
   Linking,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -95,14 +95,10 @@ function NavBar({ active, onSelect }) {
   const tabs = Object.keys(WEBSITES).map((website) => (
     <TouchableWithoutFeedback
       key={website}
-      onPress={function () {
+      onPress={() => {
         onSelect(website)
       }}>
-      <View
-        style={[
-          styles.navBarTab,
-          active === website && styles.navBarTabActive,
-        ]}>
+      <View style={[styles.navBarTab, active === website && styles.navBarTabActive]}>
         <Text>{website}</Text>
       </View>
     </TouchableWithoutFeedback>
@@ -120,7 +116,7 @@ function UriBar({ uri }) {
         </Text>
       </View>
       <TouchableOpacity
-        onPress={function () {
+        onPress={() => {
           Clipboard.setString(uri)
           Alert.alert('Copy to clipboard', `Copied URI to clipboard: ${uri}`)
         }}
@@ -128,7 +124,7 @@ function UriBar({ uri }) {
         <Text style={styles.uriText}>Copy to clipboard</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={function () {
+        onPress={() => {
           Linking.openURL(uri)
         }}
         style={styles.uriTouchable}>
@@ -152,9 +148,7 @@ function SelectUriBar() {
 
 function schemeStyle(styleName, colorScheme) {
   const baseStyle = styles[styleName]
-  return colorScheme === 'dark'
-    ? [baseStyle, styles[`${styleName}Dark`]]
-    : baseStyle
+  return colorScheme === 'dark' ? [baseStyle, styles[`${styleName}Dark`]] : baseStyle
 }
 
 export default function App() {
@@ -195,9 +189,7 @@ export default function App() {
     <StrictMode>
       <View style={schemeStyle('layout', colorScheme)}>
         <View style={styles.titleView}>
-          <Text style={schemeStyle('titleText', colorScheme)}>
-            React Native Electron
-          </Text>
+          <Text style={schemeStyle('titleText', colorScheme)}>React Native Electron</Text>
         </View>
         <View style={styles.subtitleView}>
           <Text style={schemeStyle('subtitleText', colorScheme)}>

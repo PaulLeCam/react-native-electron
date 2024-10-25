@@ -62,9 +62,9 @@ export {
 } from 'react-native-web'
 
 // APIs
-export * as Alert from './apis/Alert'
-export * as Linking from './apis/Linking'
-export * as Platform from './apis/Platform'
+export * as Alert from './apis/Alert.js'
+export * as Linking from './apis/Linking.js'
+export * as Platform from './apis/Platform.js'
 
 if (window.ReactNativeElectron == null) {
   console.warn(

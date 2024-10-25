@@ -1,4 +1,4 @@
-import type { AlertType, ReactNativeElectron } from '../types'
+import type { AlertType, ReactNativeElectron } from '../types.js'
 
 const remote = window.ReactNativeElectron as ReactNativeElectron
 
@@ -22,7 +22,7 @@ export const alert = (
     })
     .then((response: number) => {
       const button = buttons[response]
-      if (button && button.onPress) {
+      if (button?.onPress) {
         button.onPress()
       }
     })

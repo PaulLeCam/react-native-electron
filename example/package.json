@@ -3,33 +3,31 @@
   "productName": "React Native Electron",
   "version": "1.0.0",
   "description": "Example React Native Electron application",
+  "author": {
+    "name": "Paul Le Cam",
+    "email": "paul@ulem.net"
+  },
+  "keywords": [],
+  "license": "MIT",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "make": "electron-forge make",
     "package": "electron-forge package"
   },
-  "keywords": [],
-  "author": {
-    "name": "Paul Le Cam",
-    "email": "paul@ulem.net"
-  },
-  "license": "MIT",
   "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-native-electron": "workspace:*"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/preset-react": "^7.17.12",
-    "@electron-forge/cli": "^6.1.1",
-    "@electron-forge/maker-zip": "^6.1.1",
-    "@electron-forge/plugin-webpack": "6.1.1",
-    "babel-loader": "^9.1.2",
-    "electron": "^24.0.0",
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-zip": "^7.5.0",
+    "@electron-forge/plugin-webpack": "7.5.0",
+    "electron": "^33.0.2",
     "node-loader": "^2.0.0",
-    "webpack": "^5.78.0"
+    "swc-loader": "^0.2.6",
+    "webpack": "^5.95.0"
   },
   "config": {
     "forge": {
@@ -51,7 +49,7 @@
                   "html": "./src/index.html",
                   "js": "./src/renderer.js",
                   "preload": {
-                    "js": "./node_modules/react-native-electron/preload.js"
+                    "js": "./node_modules/react-native-electron/lib/preload.js"
                   },
                   "name": "main_window"
                 }

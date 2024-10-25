@@ -3,16 +3,13 @@ import type { MessageBoxOptions, WebContents } from 'electron'
 
 // Alert module
 
-ipcMain.handle(
-  'react-native-show-alert',
-  async (event, options: MessageBoxOptions) => {
-    const window = BrowserWindow.fromWebContents(event.sender)
-    if (window != null) {
-      const { response } = await dialog.showMessageBox(window, options)
-      return response
-    }
-  },
-)
+ipcMain.handle('react-native-show-alert', async (event, options: MessageBoxOptions) => {
+  const window = BrowserWindow.fromWebContents(event.sender)
+  if (window != null) {
+    const { response } = await dialog.showMessageBox(window, options)
+    return response
+  }
+})
 
 // Linking module
 

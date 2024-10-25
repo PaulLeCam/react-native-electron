@@ -1,12 +1,19 @@
 module.exports = [
   {
-    test: /\.jsx?$/,
+    test: /\.js$/,
+    exclude: /(node_modules)/,
     use: {
-      loader: 'babel-loader',
+      loader: 'swc-loader',
       options: {
-        exclude: /node_modules/,
-        presets: ['@babel/preset-react'],
-        plugins: ['@babel/plugin-proposal-export-namespace-from'],
+        jsc: {
+          parser: {
+            syntax: 'ecmascript',
+            jsx: true,
+          },
+        },
+        env: {
+          targets: 'Electron >= 33',
+        },
       },
     },
   },

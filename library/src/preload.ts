@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
-import type { Listener, ShowAlertConfig } from './types'
+import type { Listener, ShowAlertConfig } from './types.js'
 
 function addAppOpenURLListener(listener: Listener) {
   ipcRenderer.addListener('react-native-app-open-url', listener)
