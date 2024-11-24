@@ -12,6 +12,7 @@ export {
   Appearance,
   AppRegistry,
   AppState,
+  BackHandler,
   Clipboard,
   Dimensions,
   Easing,
@@ -54,10 +55,12 @@ export {
   View,
   VirtualizedList,
   YellowBox,
+  LogBox,
   // plugins
   DeviceEventEmitter,
   // hooks
   useColorScheme,
+  useLocaleContext,
   useWindowDimensions,
 } from 'react-native-web'
 
