@@ -20,7 +20,7 @@ async function openURL(url: string): Promise<void> {
 }
 
 async function showAlert(config: ShowAlertConfig): Promise<void> {
-  await ipcRenderer.invoke('react-native-show-alert', config)
+  return await ipcRenderer.invoke('react-native-show-alert', config)
 }
 
 contextBridge.exposeInMainWorld('ReactNativeElectron', {
