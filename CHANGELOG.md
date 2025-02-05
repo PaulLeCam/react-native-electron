@@ -1,3 +1,9 @@
+## v0.20.1 (2025-02-05)
+
+- Fixed `alert()` button handling
+  ([PR #29](https://github.com/PaulLeCam/react-native-electron/pull/29) by
+  [hans00](https://github.com/hans00)).
+
 ## v0.20.0 (2024-10-25)
 
 - Updated Electron dependency to v33.0.

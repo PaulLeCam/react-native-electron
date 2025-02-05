@@ -19,7 +19,7 @@ async function openURL(url: string): Promise<void> {
   await ipcRenderer.invoke('react-native-open-url', url)
 }
 
-async function showAlert(config: ShowAlertConfig): Promise<void> {
+async function showAlert(config: ShowAlertConfig): Promise<number> {
   return await ipcRenderer.invoke('react-native-show-alert', config)
 }
 

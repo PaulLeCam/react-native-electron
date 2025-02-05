@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron-repo",
-  "version": "0.19.0",
+  "version": "0.0.0",
   "description": "Electron extensions to React Native for Web",
   "repository": {
     "type": "git",
@@ -19,8 +19,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@swc/cli": "0.5.1",
-    "@swc/core": "^1.7.39",
+    "@swc/cli": "0.6.0",
+    "@swc/core": "^1.10.14",
     "del-cli": "^6.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@biomejs/biome", "@swc/core", "electron"]
   }
 }
