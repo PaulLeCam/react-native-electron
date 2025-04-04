@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "description": "Electron extensions to React Native for Web",
   "repository": {
     "type": "git",
@@ -30,13 +30,13 @@
   },
   "peerDependencies": {
     "electron": ">=33.0.0",
-    "react": "^18.0.0",
-    "react-native-web": "^0.19.0"
+    "react": "^18.0.0 || ^19.0.0",
+    "react-native-web": "^0.20.0"
   },
   "devDependencies": {
-    "electron": "^33.2.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-native-web": "^0.19.13"
+    "electron": "^35.1.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-native-web": "^0.20.0"
   }
 }

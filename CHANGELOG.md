@@ -1,8 +1,10 @@
-## v0.20.1 (2025-02-05)
+## v0.21.0 (2025-04-04)
 
-- Fixed `alert()` button handling
-  ([PR #29](https://github.com/PaulLeCam/react-native-electron/pull/29) by
-  [hans00](https://github.com/hans00)).
+Updated React Native for Web dependency to v0.20, adding support for React v19.
+
+## v0.20.2 (2025-02-05)
+
+Fixed `alert()` button handling ([PR #29](https://github.com/PaulLeCam/react-native-electron/pull/29) by [hans00](https://github.com/hans00)).
 
 ## v0.20.0 (2024-10-25)
 

@@ -4,10 +4,10 @@ import {
   Clipboard,
   Linking,
   Platform,
+  Pressable,
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
   useColorScheme,
 } from 'react-native'
@@ -93,7 +93,7 @@ function getWebsite(nameOrURI) {
 
 function NavBar({ active, onSelect }) {
   const tabs = Object.keys(WEBSITES).map((website) => (
-    <TouchableWithoutFeedback
+    <Pressable
       key={website}
       onPress={() => {
         onSelect(website)
@@ -101,7 +101,7 @@ function NavBar({ active, onSelect }) {
       <View style={[styles.navBarTab, active === website && styles.navBarTabActive]}>
         <Text>{website}</Text>
       </View>
-    </TouchableWithoutFeedback>
+    </Pressable>
   ))
 
   return <View style={styles.navBar}>{tabs}</View>
