@@ -5,6 +5,6 @@
     }
   },
   "env": {
-    "targets": "Electron >= 33"
+    "targets": "Electron >= 35"
   }
 }

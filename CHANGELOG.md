@@ -1,3 +1,10 @@
+## v0.22.0 (2025-07-30)
+
+- Updated React Native for Web dependency to v0.21.
+- Updated Electron dependency to v35.0.
+- Removed the following exports from React Native for Web not supported by React Native: `Checkbox`, `Clipboard`, `Picker`, `ProgressBar`, `render`, `unmountComponentAtNode`, `unstable_createElement`, `useLocaleContext`, `YellowBox`.
+- Added `react-native-electron/clipboard` export.
+
 ## v0.21.0 (2025-04-04)
 
 Updated React Native for Web dependency to v0.20, adding support for React v19.

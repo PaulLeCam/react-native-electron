@@ -1,16 +1,16 @@
-import React, { StrictMode, useEffect, useState } from 'react'
+import { StrictMode, useEffect, useState } from 'react'
 import {
   Alert,
-  Clipboard,
   Linking,
   Platform,
   Pressable,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
   useColorScheme,
+  View,
 } from 'react-native'
+import * as Clipboard from 'react-native-electron/clipboard'
 
 const WEBSITES = {
   'React Native': 'https://reactnative.dev/docs/getting-started',

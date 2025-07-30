@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Electron extensions to React Native for Web",
   "repository": {
     "type": "git",
@@ -12,31 +12,40 @@
     "url": "https://github.com/PaulLeCam/react-native-electron/issues"
   },
   "homepage": "https://github.com/PaulLeCam/react-native-electron#readme",
-  "files": ["lib/*", "LICENSE"],
+  "files": [
+    "lib/*",
+    "LICENSE"
+  ],
   "type": "module",
   "main": "lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./clipboard": {
+      "types": "./lib/clipboard.d.ts",
+      "default": "./lib/clipboard.js"
+    },
     "./main": "./lib/main.js",
     "./preload": "./lib/preload.js"
   },
   "scripts": {
     "build:clean": "del lib",
+    "build:types": "tsc --emitDeclarationOnly --skipLibCheck --outDir lib",
     "build:js": "swc src -d ./lib --config-file ./swc.json --strip-leading-paths",
-    "build": "pnpm run build:clean && pnpm run build:js",
+    "build": "pnpm run build:clean && pnpm run build:types && pnpm run build:js",
     "test:types": "tsc --noEmit --skipLibCheck",
     "test": "pnpm run test:types",
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
-    "electron": ">=33.0.0",
+    "electron": ">=35.0.0",
     "react": "^18.0.0 || ^19.0.0",
-    "react-native-web": "^0.20.0"
+    "react-native-web": "^0.21.0"
   },
   "devDependencies": {
-    "electron": "^35.1.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-native-web": "^0.20.0"
+    "electron": "^37.2.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-native": "^0.80.2",
+    "react-native-web": "^0.21.0"
   }
 }

@@ -1,6 +1,6 @@
-import type { AlertType, ReactNativeElectron } from '../types.js'
+import type { AlertType } from '../types.js'
 
-const remote = window.ReactNativeElectron as ReactNativeElectron
+const remote = window.ReactNativeElectron
 
 type AlertButton = {
   text: string

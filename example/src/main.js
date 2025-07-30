@@ -26,7 +26,7 @@ if (!gotTheLock) {
 } else {
   const { sendOpenURL } = require('react-native-electron/main')
 
-  app.on('second-instance', (event, argv) => {
+  app.on('second-instance', (_event, argv) => {
     if (appWindow != null) {
       if (appWindow.isMinimized()) {
         appWindow.restore()

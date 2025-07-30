@@ -9,17 +9,6 @@ export type ShowAlertConfig = {
   type?: AlertType
 }
 
-export type ReactNativeElectron = {
-  appOpenURL: {
-    addListener(_listener: Listener): void
-    removeListener(_listener: Listener): void
-  }
-  getInitialURL(): Promise<string | null>
-  openURL(_url: string): Promise<void>
-  showAlert(_config: ShowAlertConfig): Promise<number>
-  platform: string
-}
-
 export type PlatformSelection = {
   win32?: unknown
   linux?: unknown
@@ -27,4 +16,17 @@ export type PlatformSelection = {
   electron?: unknown
   web?: unknown
   default?: unknown
+}
+
+export type ReactNativeElectron = {
+  appOpenURL: {
+    addListener(listener: Listener): void
+    removeListener(listener: Listener): void
+  }
+  getInitialURL(): Promise<string | null>
+  openURL(url: string): Promise<void>
+  getClipboardText(): Promise<string>
+  setClipboardText(text: string): Promise<void>
+  showAlert(config: ShowAlertConfig): Promise<number>
+  platform: string
 }

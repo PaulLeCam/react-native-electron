@@ -1,5 +1,5 @@
-import { BrowserWindow, dialog, ipcMain, shell } from 'electron'
 import type { MessageBoxOptions, WebContents } from 'electron'
+import { BrowserWindow, clipboard, dialog, ipcMain, shell } from 'electron'
 
 // Alert module
 
@@ -9,6 +9,16 @@ ipcMain.handle('react-native-show-alert', async (event, options: MessageBoxOptio
     const { response } = await dialog.showMessageBox(window, options)
     return response
   }
+})
+
+// Clipboard module
+
+ipcMain.handle('react-native-get-clipboard-text', async () => {
+  return await clipboard.readText()
+})
+
+ipcMain.handle('react-native-set-clipboard-text', async (_event, text: string) => {
+  await clipboard.writeText(text)
 })
 
 // Linking module
@@ -31,7 +41,7 @@ ipcMain.handle('react-native-get-initial-url', () => {
   return Promise.resolve(process.argv[1])
 })
 
-ipcMain.handle('react-native-open-url', async (event, url: string) => {
+ipcMain.handle('react-native-open-url', async (_event, url: string) => {
   await shell.openExternal(url)
 })
 

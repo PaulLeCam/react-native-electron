@@ -1,6 +1,9 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
+import { AppRegistry } from 'react-native'
 
 import App from './App'
 
-createRoot(document.getElementById('app')).render(<App />)
+AppRegistry.registerComponent('App', () => App)
+AppRegistry.runApplication('App', {
+  initialProps: {},
+  rootTag: document.getElementById('app'),
+})

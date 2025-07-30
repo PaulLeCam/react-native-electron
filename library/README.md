@@ -45,7 +45,9 @@ To run the demo app, fork this repository and run the following commands in the 
 - `pnpm run build`
 - `pnpm start`
 
-## APIs
+## React Native APIs
+
+These APIs mostly match React Native APIs, possibly with additional exports or options specific to Electron. They are exported by the main `react-native-electron` module.
 
 ### Alert
 
@@ -94,6 +96,18 @@ Platform.select(
   default?: any
 ): any
 ```
+
+## Additional APIs
+
+These modules provide additional functionalities not part of the main React Native APIs.
+
+### Clipboard
+
+Theses APIs provide interactions with the system's clipboard using [Electron's `clipboard` module](https://www.electronjs.org/docs/latest/api/clipboard). They are exported by the `react-native-electron/clipboard` module.
+
+`getString(): Promise<string>`
+
+`setString(value: string): Promise<void>`
 
 ## License
 

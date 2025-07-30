@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
-    "strict": true
+    "declaration": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "react-native-web": ["../node_modules/react-native/types"],
+      "react-native-web/*": ["../node_modules/react-native/types/*"]
+    }
   }
 }

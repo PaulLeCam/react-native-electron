@@ -1,15 +1,14 @@
-import type { Listener, ReactNativeElectron } from '../types.js'
+import type { Listener } from '../types.js'
 
-const remote = window.ReactNativeElectron as ReactNativeElectron
+const remote = window.ReactNativeElectron
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 function noop() {}
 
-const eventHandlers = new Map<Listener, (_event: unknown, _url: string) => void>()
+const eventHandlers = new Map<Listener, Listener>()
 
 export const addEventListener = (type: string, handler: Listener): (() => void) => {
   if (type === 'url' && typeof handler === 'function') {
-    const wrapHandler = (event: unknown, url: string) => {
+    const wrapHandler: Listener = (_event, url) => {
       handler({ type, url })
     }
     eventHandlers.set(handler, wrapHandler)

@@ -19,6 +19,14 @@ async function openURL(url: string): Promise<void> {
   await ipcRenderer.invoke('react-native-open-url', url)
 }
 
+async function getClipboardText(): Promise<string> {
+  return await ipcRenderer.invoke('react-native-get-clipboard-text')
+}
+
+async function setClipboardText(text: string): Promise<void> {
+  await ipcRenderer.invoke('react-native-set-clipboard-text', text)
+}
+
 async function showAlert(config: ShowAlertConfig): Promise<number> {
   return await ipcRenderer.invoke('react-native-show-alert', config)
 }
@@ -30,6 +38,8 @@ contextBridge.exposeInMainWorld('ReactNativeElectron', {
   },
   getInitialURL,
   openURL,
+  getClipboardText,
+  setClipboardText,
   showAlert,
   platform: process.platform,
 })

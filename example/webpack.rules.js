@@ -10,9 +10,14 @@ module.exports = [
             syntax: 'ecmascript',
             jsx: true,
           },
+          transform: {
+            react: {
+              runtime: 'automatic',
+            },
+          },
         },
         env: {
-          targets: 'Electron >= 33',
+          targets: 'Electron >= 35',
         },
       },
     },
