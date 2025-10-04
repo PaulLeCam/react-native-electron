@@ -56,6 +56,11 @@ export * as Alert from './apis/Alert.js'
 export * as Linking from './apis/Linking.js'
 export * as Platform from './apis/Platform.js'
 
+// react-native APIs needed by some modules
+export const unstable_batchedUpdates = (callback: () => void) => {
+  callback()
+}
+
 if (window.ReactNativeElectron == null) {
   console.warn(
     'Could not access React Native Electron APIs, make sure the "react-native-electron/preload.js" script is preloaded in this window.',

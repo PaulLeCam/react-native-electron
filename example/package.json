@@ -16,18 +16,18 @@
     "package": "electron-forge package"
   },
   "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-native-electron": "workspace:*"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^7.8.2",
-    "@electron-forge/maker-zip": "^7.8.2",
-    "@electron-forge/plugin-webpack": "7.8.2",
-    "electron": "^37.2.4",
+    "@electron-forge/cli": "^7.9.0",
+    "@electron-forge/maker-zip": "^7.9.0",
+    "@electron-forge/plugin-webpack": "7.9.0",
+    "electron": "^38.2.1",
     "node-loader": "^2.1.0",
     "swc-loader": "^0.2.6",
-    "webpack": "^5.101.0"
+    "webpack": "^5.102.0"
   },
   "config": {
     "forge": {
